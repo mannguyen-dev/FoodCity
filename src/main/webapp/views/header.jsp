@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap2.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="css/owl2.carousel.min.css" type="text/css" />  
+    <link rel="stylesheet" href="css/bootstrap2.min.css.map" type="text/css" /> 
+    <link rel="stylesheet" href="css/style2.css" type="text/css" />    
   </head>
 
   <body>

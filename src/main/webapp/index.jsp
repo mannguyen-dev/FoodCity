@@ -3,8 +3,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <jsp:include page="views/header.jsp" />
-<jsp:include page="views/hero_section.jsp" />
-<jsp:include page="views/categories_section.jsp" />
+<jsp:include page="hero" />
+<jsp:include page="categories" />
 <jsp:include page="views/feature_section.jsp" />
 <jsp:include page="views/banner.jsp" />
 <jsp:include page="views/product_section.jsp" />

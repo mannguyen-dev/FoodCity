@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import businessLogics.CategoryBL;
 import businessLogics.UserBL;
-
+import javaBeans.Category;
 import javaBeans.User;
 
 @Controller
@@ -30,42 +31,19 @@ public class HomeController {
 	}
 	
 	@RequestMapping({"/","/home"})
-	public String trangChu() {
+	public String home() {
 		return "redirect:/index.jsp";
 	}
 	
-	@RequestMapping(path = "/login")
-	public String header(HttpServletRequest request) {
-		return "login_section";
-	}
-	
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String header(HttpServletRequest request, 
-			@RequestParam(name = "email",required = true) String email,
-			@RequestParam(name = "password",required = true) String password) {
-		UserBL uBL = new UserBL();
-		User u;
-		if (email.contains("@"))
-			u =  uBL.loginByEmail(email, password);
-		else
-			u = uBL.loginByPhone(email, password);
+	@RequestMapping({"/hero"})
+	public String hero(HttpServletRequest request) {
+		//Get category
+		CategoryBL categoryBL = new CategoryBL();
+		List<Category> listCategogy = categoryBL.getAllCategory();
 		
-		if (u == null) {
-			request.setAttribute("mess", "Sai mật khẩu hoặc email/số điện thoại chưa đăng ký.");
-			return "login_section";
-		}
+		request.setAttribute("listCat", listCategogy);
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user", u);
-		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home'> trang chủ!  </a>");
-		return "login_section";
-	}
-	
-	@RequestMapping(path = "/logout")
-	public String logout(HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		if (session != null) session.invalidate();
-		return "redirect:/home";
+		return "hero_section";
 	}
 	
 

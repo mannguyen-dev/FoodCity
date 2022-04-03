@@ -12,7 +12,7 @@
           <div class="col-lg-3 col-md-6 col-sm-6">
             <div class="footer__about">
               <div class="footer__about__logo">
-                <a href="./index.html"><img src="img/logo.png" alt="" /></a>
+                <a href="./index.jsp"><img src="img/logo.png" alt="" /></a>
               </div>
               <ul>
                 <li>Address: 60-49 Road 11378 New York</li>
@@ -96,5 +96,10 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/jquery2-3.3.1.min.js"></script>
+    <script src="js/bootstrap2.min.js"></script>
+    <script src="js/main2.js"></script>
+    <script src="js/owl2.carousel.min.js"></script>
+    <script src="js/popper2.min.js"></script>
   </body>
 </html>

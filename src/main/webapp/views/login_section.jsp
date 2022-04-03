@@ -2,11 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-
+<!-- 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
@@ -15,14 +14,14 @@
 
     <link rel="stylesheet" href="css/owl.carousel.min.css">
 
-    <!-- Bootstrap CSS -->
+
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
-    <!-- Style -->
+
     <link rel="stylesheet" href="css/style.css">
 
     <title>Login #2</title>
-  </head>
+  </head>  -->
   <body>
   
 
@@ -35,6 +34,8 @@
           <div class="col-md-7">
             <h3>Đăng nhập vào <strong>Ogani</strong></h3>
             <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            
+            <c:if test="${empty sessionScope.user }">
             <form action="login_page.jsp" method="post">
               <div class="form-group first">
                 <label for="username">Email/Số điện thoại</label>
@@ -46,7 +47,7 @@
               </div>
               
               <p style="color:red">${mess}<p>
-              <p style="color:blue">${mess1}<p>
+              
               
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
@@ -59,6 +60,8 @@
               <input type="submit" value="Log In" class="btn btn-block btn-primary">
 
             </form>
+            </c:if>
+            <p style="color:blue">${mess1}<p>
           </div>
         </div>
       </div>
