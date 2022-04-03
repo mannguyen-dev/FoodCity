@@ -41,7 +41,7 @@
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
-      <div class="humberger__menu__logo" style="height: 30px;width: 100px">
+      <div class="humberger__menu__logo">
         <a href="#"><img src="img/logo.png" alt=""/></a>
       </div>
       <div class="humberger__menu__cart">
@@ -66,7 +66,12 @@
           </ul>
         </div>
         <div class="header__top__right__auth">
-          <a href="#"><i class="fa fa-user"></i> Login</a>
+        <c:if test="${empty sessionScope.user }">
+           <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+        </c:if>
+        <c:if test="${not empty sessionScope.user }">
+           <a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+        </c:if>
         </div>
       </div>
       <nav class="humberger__menu__nav mobile-menu">
@@ -110,8 +115,14 @@
             <div class="col-lg-6 col-md-6">
               <div class="header__top__left">
                 <ul>
-                  <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
+                <c:if test="${not empty sessionScope.user}">
+                  <li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
                   <li>Free Shipping for all Order of $99</li>
+                </c:if>
+                <c:if test="${empty sessionScope.user }">
+                  <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+                  <li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
+                </c:if>
                 </ul>
               </div>
             </div>
@@ -136,7 +147,12 @@
                   </ul>
                 </div>
                 <div class="header__top__right__auth">
+                <c:if test="${empty sessionScope.user }">
                   <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+                </c:if>
+                <c:if test="${not empty sessionScope.user }">
+                  <a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+                </c:if>
                 </div>
               </div>
             </div>

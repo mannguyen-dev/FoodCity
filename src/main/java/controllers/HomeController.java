@@ -29,7 +29,7 @@ public class HomeController {
 		}
 	}
 	
-	@RequestMapping("/")
+	@RequestMapping({"/","/home"})
 	public String trangChu() {
 		return "redirect:/index.jsp";
 	}
@@ -57,7 +57,16 @@ public class HomeController {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", u);
-		return "redirect:/index.jsp";
+		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home'> trang chủ!  </a>");
+		return "login_section";
 	}
+	
+	@RequestMapping(path = "/logout")
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if (session != null) session.invalidate();
+		return "redirect:/home";
+	}
+	
 
 }

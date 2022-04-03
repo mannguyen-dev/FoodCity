@@ -27,7 +27,7 @@
   
 
   <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('img/bg_1.jpg');"></div>
     <div class="contents order-2 order-md-1">
 
       <div class="container">
@@ -46,6 +46,7 @@
               </div>
               
               <p style="color:red">${mess}<p>
+              <p style="color:blue">${mess1}<p>
               
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
