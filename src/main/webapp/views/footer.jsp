@@ -96,10 +96,11 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
+    <!-- 
     <script src="js/jquery2-3.3.1.min.js"></script>
     <script src="js/bootstrap2.min.js"></script>
     <script src="js/main2.js"></script>
     <script src="js/owl2.carousel.min.js"></script>
-    <script src="js/popper2.min.js"></script>
+    <script src="js/popper2.min.js"></script>  -->
   </body>
 </html>

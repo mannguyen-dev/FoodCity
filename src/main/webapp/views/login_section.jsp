@@ -22,7 +22,7 @@
 
     <title>Login #2</title>
   </head>  -->
-  <body>
+
   
 
   <div class="d-lg-flex half">
@@ -70,11 +70,11 @@
     
   </div>
     
-    
+    <script src="js/jquery2-3.3.1.min.js"></script>
+    <script src="js/bootstrap2.min.js"></script>
+    <script src="js/main2.js"></script>
+    <script src="js/owl2.carousel.min.js"></script>
+    <script src="js/popper2.min.js"></script>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
+
 </html>

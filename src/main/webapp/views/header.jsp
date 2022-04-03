@@ -150,12 +150,17 @@
                     <li><a href="#">English</a></li>
                   </ul>
                 </div>
-                <div class="header__top__right__auth">
                 <c:if test="${empty sessionScope.user }">
-                  <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+                <div class="header__top__right__auth">
+                	<a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+               
+                	<a href="signup_page.jsp"><i class="fa fa-user"></i> Đăng ký</a>
+                </div>
                 </c:if>
                 <c:if test="${not empty sessionScope.user }">
-                  <a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+                <div class="header__top__right__auth">
+                	<a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+                </div>
                 </c:if>
                 </div>
               </div>

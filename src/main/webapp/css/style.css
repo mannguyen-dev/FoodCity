@@ -51,6 +51,10 @@ h6 {
   font-family: "Roboto", "Cairo", sans-serif;
 }
 
+.signup_section{
+	height: 800px;
+}
+
 h1 {
   font-size: 70px;
 }
@@ -292,6 +296,8 @@ ol {
 }
 
 .header__top__right {
+	display: flex;
+	justify-content:right;
   text-align: right;
   padding: 10px 0 13px;
 }
@@ -395,11 +401,13 @@ ol {
 }
 
 .header__top__right__auth {
-  display: inline-block;
+  display: flex;
+  justify-content: right;
 }
 
 .header__top__right__auth a {
-  display: block;
+  display: inline-block;
+  margin-left: 8px;
   font-size: 14px;
   color: #1c1c1c;
 }
