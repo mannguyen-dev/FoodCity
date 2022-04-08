@@ -104,8 +104,14 @@
       </div>
       <div class="humberger__menu__contact">
         <ul>
-          <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-          <li>Free Shipping for all Order of $99</li>
+         <c:if test="${not empty sessionScope.user}">
+         	<li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
+         	<li>Xin chào, ${sessionScope.user.name }!</li>
+         </c:if>
+         <c:if test="${empty sessionScope.user }">
+        	<li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+        	<li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
+        </c:if>
         </ul>
       </div>
     </div>
@@ -121,7 +127,7 @@
                 <ul>
                 <c:if test="${not empty sessionScope.user}">
                   <li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
-                  <li>Free Shipping for all Order of $99</li>
+                  <li>Xin chào, ${sessionScope.user.name }!</li>
                 </c:if>
                 <c:if test="${empty sessionScope.user }">
                   <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
