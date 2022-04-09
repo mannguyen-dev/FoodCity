@@ -2,26 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
-<!-- 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-
-
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    
-
-    <link rel="stylesheet" href="css/style.css">
-
-    <title>Login #2</title>
-  </head>  -->
 
   <section class="signup_section">
 
@@ -32,45 +12,67 @@
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7 py-5">
-            <h3>Register</h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+            <h3>Đăng ký</h3>
+            <p class="mb-4" style="color: #495057">Trở thành thành viên của Food City để khám phá thế giới ẩm thực và nhận nhiều ưu đãi hấp dẫn!</p>
             <form action="#" method="post">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group first">
+                    <label for="fname">Tên đăng nhập</label>
+                    <input type="text" class="form-control" placeholder="e.g. Nguyên Trịnh" id="fname">
+                  </div>    
+                </div>
+              </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="fname">First Name</label>
-                    <input type="text" class="form-control" placeholder="e.g. John" id="fname">
+                    <label for="birthday">Ngày sinh</label>
+                    <input type="text" class="form-control" placeholder="e.g. 07/05/1995" id="birthday">
                   </div>    
                 </div>
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="lname">Last Name</label>
-                    <input type="text" class="form-control" placeholder="e.g. Smith" id="lname">
+                    <label for="avatar">Ảnh đại diện</label>
+  					<input type="file" id="avatar" name="avatar" alt="Ảnh đại diện" class="upload-btn form-control">
                   </div>    
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group first">
-                    <label for="email">Email Address</label>
-                    <input type="email" class="form-control" placeholder="e.g. john@your-domain.com" id="email">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="e.g. nguyentrinh@gmail.com" id="email">
+                  </div>    
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group first">
+                    <label for="phone">Số điện thoại</label>
+                    <input type="text" class="form-control" placeholder="+00 0000 000 000" id="phone">
                   </div>    
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="lname">Phone Number</label>
-                    <input type="text" class="form-control" placeholder="+00 0000 000 0000" id="lname">
+                    <label for="phone">Bạn là một</label>
+                    <select name="role" id="role" class="form-control">
+    					<option value="customer">Thực khách</option>
+    					<option value="manager">Quản lý</option>
+  					</select>
                   </div>    
                 </div>
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="lname">Website</label>
-                    <input type="text" class="form-control" placeholder="e.g. https://google.com" id="lname">
+                    <label for="gender">Giới tính</label>
+                    <select name="gender" id="gender" class="form-control">
+    					<option value="nam">Nam</option>
+    					<option value="nu">Nữ</option>
+  					</select>
                   </div>    
                 </div>
-              </div>
+              </div><br>
               <div class="row">
                 <div class="col-md-6">
               

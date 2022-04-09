@@ -52,7 +52,7 @@ h6 {
 }
 
 .signup_section{
-	height: 800px;
+	height: 1000px;
 }
 
 h1 {
@@ -186,6 +186,19 @@ ol {
   background: #e67e22;
   border: none;
 }
+
+.upload-btn {
+  font-size: 14px;
+  color: rgb(33, 37, 41);
+  font-weight: 400;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 13px 30px 12px 10px;
+  background: #ffffff;
+  border: none;
+  width: 100%
+}
+
 
 /* Preloder */
 

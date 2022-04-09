@@ -36,7 +36,9 @@
                     <a href="#"><i class="fa fa-retweet"></i></a>
                   </li>
                   <li>
+                  <c:if test="${res.linkToBuy != null }">
                     <a href="${res.linkToBuy }"><i class="fa fa-shopping-cart"></i></a>
+                  </c:if>
                   </li>
                 </ul>
               </div>

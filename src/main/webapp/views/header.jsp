@@ -15,6 +15,7 @@
     <title>Ogani | Restaurant</title>
 
     <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,900;1,800&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;900&family=Roboto:wght@100;300;400;500;700;900&family=Yanone+Kaffeesatz:wght@200;300;400;600;700&display=swap"
       rel="stylesheet"
@@ -81,7 +82,7 @@
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="./shop-grid.html">Khám phá</a></li>
           <li>
             <a href="#">Pages</a>
             <ul class="header__menu__dropdown">
@@ -185,7 +186,7 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="./shop-grid.html">Khám phá</a></li>
                 <li>
                   <a href="#">Pages</a>
                   <ul class="header__menu__dropdown">
