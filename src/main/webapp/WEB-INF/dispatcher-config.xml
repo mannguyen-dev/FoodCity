@@ -17,6 +17,7 @@
 	<mvc:resources location="/img/featured/" mapping="/img/featured/*"/>
 	<mvc:resources location="/img/banner/" mapping="/img/banner/*"/>
 	<mvc:resources location="/img/categories/" mapping="/img/categories/*"/>
+	<mvc:resources location="/img/restaurant/" mapping="/img/restaurant/*"/>
 	<mvc:resources location="/img/latest-product/" mapping="/img/latest-product/*"/>
 	<mvc:resources location="/img/hero/" mapping="/img/hero/*"/>
 	<mvc:resources location="/img/blog/" mapping="/img/blog/*"/>

@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import businessLogics.CategoryBL;
+import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
-
+import javaBeans.Category;
+import javaBeans.Restaurant;
 import javaBeans.User;
 
 @Controller
@@ -29,35 +32,66 @@ public class HomeController {
 		}
 	}
 	
-	@RequestMapping("/")
-	public String trangChu() {
+	@RequestMapping({"/","/home"})
+	public String home() {
 		return "redirect:/index.jsp";
 	}
 	
-	@RequestMapping(path = "/login")
-	public String header(HttpServletRequest request) {
-		return "login_section";
+	@RequestMapping({"/hero"})
+	public String hero(HttpServletRequest request) {
+		//Get category
+		CategoryBL categoryBL = new CategoryBL();
+		List<Category> listCategogy = categoryBL.getAllCategory();
+		
+		request.setAttribute("listCat", listCategogy);
+		
+		return "hero_section";
 	}
 	
-	@RequestMapping(path = "/login", method = RequestMethod.POST)
-	public String header(HttpServletRequest request, 
-			@RequestParam(name = "email",required = true) String email,
-			@RequestParam(name = "password",required = true) String password) {
-		UserBL uBL = new UserBL();
-		User u;
-		if (email.contains("@"))
-			u =  uBL.loginByEmail(email, password);
-		else
-			u = uBL.loginByPhone(email, password);
+	@RequestMapping({"/feature"})
+	public String feature(HttpServletRequest request) {
+		//Get category
+		CategoryBL categoryBL = new CategoryBL();
+		List<Category> listCategogy = categoryBL.getAllCategory();
 		
-		if (u == null) {
-			request.setAttribute("mess", "Sai mật khẩu hoặc email/số điện thoại chưa đăng ký.");
-			return "login_section";
+		//
+		RestaurantBL restaurantBL = new RestaurantBL();
+		List<Restaurant> listRestaurant;
+		if (request.getParameter("category") == null)
+			listRestaurant = restaurantBL.getAllRestaurants();
+		else {
+			int id_cat = Integer.parseInt(request.getParameter("category"));
+			listRestaurant = restaurantBL.getAllRestaurantsByCategory(id_cat,6);
 		}
 		
-		HttpSession session = request.getSession();
-		session.setAttribute("user", u);
-		return "redirect:/index.jsp";
+		request.setAttribute("listCat", listCategogy);
+		request.setAttribute("listRes", listRestaurant);
+		
+		return "feature_section";
 	}
+	
+	@RequestMapping({"/product"})
+	public String product(HttpServletRequest request) {
+		//Get latest Restaurant
+		RestaurantBL restaurantBL = new RestaurantBL();
+		List<Restaurant> latestRestaurant;
+		latestRestaurant = restaurantBL.getLatestRestaurants(6);
+		
+		//Get latest Restaurant
+		List<Restaurant> topRateRestaurant;
+		topRateRestaurant = restaurantBL.getTopRateRestaurants(6);
+		
+		//Get latest Restaurant
+		List<Restaurant> topReviewRestaurant;
+		topReviewRestaurant = restaurantBL.getTopReviewRestaurants(6);
+		
+		//Set attribute
+		request.setAttribute("latestRes", latestRestaurant);
+		request.setAttribute("topRateRes", topRateRestaurant);
+		request.setAttribute("topReviewRes", topReviewRestaurant);
+		
+		return "product_section";
+	}
+	
 
 }

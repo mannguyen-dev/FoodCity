@@ -51,6 +51,10 @@ h6 {
   font-family: "Roboto", "Cairo", sans-serif;
 }
 
+.signup_section{
+	height: 1000px;
+}
+
 h1 {
   font-size: 70px;
 }
@@ -183,6 +187,19 @@ ol {
   border: none;
 }
 
+.upload-btn {
+  font-size: 14px;
+  color: rgb(33, 37, 41);
+  font-weight: 400;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 13px 30px 12px 10px;
+  background: #ffffff;
+  border: none;
+  width: 100%
+}
+
+
 /* Preloder */
 
 #preloder {
@@ -292,6 +309,8 @@ ol {
 }
 
 .header__top__right {
+	display: flex;
+	justify-content:right;
   text-align: right;
   padding: 10px 0 13px;
 }
@@ -395,11 +414,13 @@ ol {
 }
 
 .header__top__right__auth {
-  display: inline-block;
+  display: flex;
+  justify-content: right;
 }
 
 .header__top__right__auth a {
-  display: block;
+  display: inline-block;
+  margin-left: 8px;
   font-size: 14px;
   color: #1c1c1c;
 }

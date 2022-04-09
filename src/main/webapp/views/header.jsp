@@ -15,6 +15,7 @@
     <title>Ogani | Restaurant</title>
 
     <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,900;1,800&display=swap" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;900&family=Roboto:wght@100;300;400;500;700;900&family=Yanone+Kaffeesatz:wght@200;300;400;600;700&display=swap"
       rel="stylesheet"
@@ -29,6 +30,10 @@
     <link rel="stylesheet" href="css/owl.carousel.min.css" type="text/css" />
     <link rel="stylesheet" href="css/slicknav.min.css" type="text/css" />
     <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/bootstrap2.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="css/owl2.carousel.min.css" type="text/css" />  
+    <link rel="stylesheet" href="css/bootstrap2.min.css.map" type="text/css" /> 
+    <link rel="stylesheet" href="css/style2.css" type="text/css" />    
   </head>
 
   <body>
@@ -41,7 +46,7 @@
     <!-- Humberger Begin -->
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
-      <div class="humberger__menu__logo" style="height: 30px;width: 100px">
+      <div class="humberger__menu__logo">
         <a href="#"><img src="img/logo.png" alt=""/></a>
       </div>
       <div class="humberger__menu__cart">
@@ -66,13 +71,18 @@
           </ul>
         </div>
         <div class="header__top__right__auth">
-          <a href="#"><i class="fa fa-user"></i> Login</a>
+        <c:if test="${empty sessionScope.user }">
+           <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+        </c:if>
+        <c:if test="${not empty sessionScope.user }">
+           <a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+        </c:if>
         </div>
       </div>
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./shop-grid.html">Shop</a></li>
+          <li><a href="./shop-grid.html">Khám phá</a></li>
           <li>
             <a href="#">Pages</a>
             <ul class="header__menu__dropdown">
@@ -95,8 +105,14 @@
       </div>
       <div class="humberger__menu__contact">
         <ul>
-          <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-          <li>Free Shipping for all Order of $99</li>
+         <c:if test="${not empty sessionScope.user}">
+         	<li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
+         	<li>Xin chào, ${sessionScope.user.name }!</li>
+         </c:if>
+         <c:if test="${empty sessionScope.user }">
+        	<li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+        	<li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
+        </c:if>
         </ul>
       </div>
     </div>
@@ -110,8 +126,14 @@
             <div class="col-lg-6 col-md-6">
               <div class="header__top__left">
                 <ul>
-                  <li><i class="fa fa-envelope"></i> hello@colorlib.com</li>
-                  <li>Free Shipping for all Order of $99</li>
+                <c:if test="${not empty sessionScope.user}">
+                  <li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
+                  <li>Xin chào, ${sessionScope.user.name }!</li>
+                </c:if>
+                <c:if test="${empty sessionScope.user }">
+                  <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+                  <li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
+                </c:if>
                 </ul>
               </div>
             </div>
@@ -135,8 +157,18 @@
                     <li><a href="#">English</a></li>
                   </ul>
                 </div>
+                <c:if test="${empty sessionScope.user }">
                 <div class="header__top__right__auth">
-                  <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+                	<a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+               
+                	<a href="signup_page.jsp"><i class="fa fa-user"></i> Đăng ký</a>
+                </div>
+                </c:if>
+                <c:if test="${not empty sessionScope.user }">
+                <div class="header__top__right__auth">
+                	<a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+                </div>
+                </c:if>
                 </div>
               </div>
             </div>
@@ -154,7 +186,7 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./shop-grid.html">Shop</a></li>
+                <li><a href="./shop-grid.html">Khám phá</a></li>
                 <li>
                   <a href="#">Pages</a>
                   <ul class="header__menu__dropdown">

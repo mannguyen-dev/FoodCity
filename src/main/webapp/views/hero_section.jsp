@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Hero Section Begin -->
     <section class="hero">
       <div class="container">
@@ -11,17 +12,9 @@
                 <span>All departments</span>
               </div>
               <ul>
-                <li><a href="#">Thịt tươi</a></li>
-                <li><a href="#">Vegetables</a></li>
-                <li><a href="#">Fruit & Nut Gifts</a></li>
-                <li><a href="#">Fresh Berries</a></li>
-                <li><a href="#">Ocean Foods</a></li>
-                <li><a href="#">Butter & Eggs</a></li>
-                <li><a href="#">Fastfood</a></li>
-                <li><a href="#">Fresh Onion</a></li>
-                <li><a href="#">Papayaya & Crisps</a></li>
-                <li><a href="#">Oatmeal</a></li>
-                <li><a href="#">Fresh Bananas</a></li>
+              <c:forEach var="list" items="${listCat }">       
+                <li><a href="#">${list.name }</a></li>
+              </c:forEach>
               </ul>
             </div>
           </div>
@@ -60,3 +53,24 @@
       </div>
     </section>
     <!-- Hero Section End -->
+    
+    <!-- Categories Section Begin -->
+    <section class="categories">
+      <div class="container">
+        <div class="row">
+          <div class="categories__slider owl-carousel">
+          <c:forEach var="cat" items="${listCat }">
+            <div class="col-lg-3">
+              <div
+                class="categories__item set-bg"
+                data-setbg="img/categories/${cat.image }"
+              >
+                <h5><a href="#">${cat.name }</a></h5>
+              </div>
+            </div>
+          </c:forEach>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Categories Section End -->
