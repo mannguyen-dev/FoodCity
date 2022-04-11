@@ -40,12 +40,12 @@
                 </div>
               </div>
             </div>
-            <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+            <div class="hero__item set-bg banner_image" data-setbg="img/hero/banner2.jpg">
               <div class="hero__text">
-                <span>FRUIT FRESH</span>
-                <h2>Vegetable <br />100% Organic</h2>
-                <p>Free Pickup and Delivery Available</p>
-                <a href="#" class="primary-btn">SHOP NOW</a>
+                <span>FOOD CITY</span>
+                <h2>Thành phố ẩm thực</h2>
+                <p>Góc chia sẻ của những người sành ăn!</p>
+                <a href="shop-grid.jsp" class="primary-btn">THAM GIA NGAY</a>
               </div>
             </div>
           </div>

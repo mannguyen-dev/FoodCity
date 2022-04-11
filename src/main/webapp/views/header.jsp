@@ -12,7 +12,7 @@
     <meta name="keywords" content="Ogani, unica, creative, html" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Ogani | Restaurant</title>
+    <title>FoodCity | Thành phố ẩm thực</title>
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,900;1,800&display=swap" rel="stylesheet">
@@ -47,7 +47,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
       <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.png" alt=""/></a>
+        <a href="#"><img src="img/logo.avg" alt=""/></a>
       </div>
       <div class="humberger__menu__cart">
         <ul>
@@ -82,7 +82,7 @@
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./shop-grid.html">Khám phá</a></li>
+          <li><a href="./shop-grid.jsp">Khám phá</a></li>
           <li>
             <a href="#">Pages</a>
             <ul class="header__menu__dropdown">
@@ -110,7 +110,7 @@
          	<li>Xin chào, ${sessionScope.user.name }!</li>
          </c:if>
          <c:if test="${empty sessionScope.user }">
-        	<li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+        	<li><i class="fa fa-envelope"></i> Chào mừng bạn đến với FoodCity</li>
         	<li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
         </c:if>
         </ul>
@@ -131,7 +131,7 @@
                   <li>Xin chào, ${sessionScope.user.name }!</li>
                 </c:if>
                 <c:if test="${empty sessionScope.user }">
-                  <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với OneFood</li>
+                  <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với FoodCity</li>
                   <li>Đăng nhập để nhận nhiều ưu đãi hấp dẫn</li>
                 </c:if>
                 </ul>
@@ -179,14 +179,14 @@
         <div class="row">
           <div class="col-lg-3">
             <div class="header__logo">
-              <a href="./index.jsp"><img src="img/logo.png" alt="logo.png" /></a>
+              <a href="./index.jsp"><img src="img/logo.svg" alt="logo.png" /></a>
             </div>
           </div>
           <div class="col-lg-6">
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./shop-grid.html">Khám phá</a></li>
+                <li><a href="./shop-grid.jsp">Khám phá</a></li>
                 <li>
                   <a href="#">Pages</a>
                   <ul class="header__menu__dropdown">

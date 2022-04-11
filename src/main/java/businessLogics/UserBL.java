@@ -153,7 +153,7 @@ public class UserBL {
 //		u.setAvatar("abc.jpg");
 //		u.setIdRole(1);
 //		u.setGender(false);
-//		u.setPassword("123");
+//		u.setPassword("123");aaaa
 //		u.setBirthday(new Date(1992, 1, 1));
 //		u.setPhone("22233445");
 //		bl.addUser(u);

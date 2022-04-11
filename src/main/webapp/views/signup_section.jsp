@@ -13,13 +13,14 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-7 py-5">
             <h3>Đăng ký</h3>
+            <p style="color: red">${warning }</p>
             <p class="mb-4" style="color: #495057">Trở thành thành viên của Food City để khám phá thế giới ẩm thực và nhận nhiều ưu đãi hấp dẫn!</p>
-            <form action="#" method="post">
+            <form action="signup_page.jsp" method="post" enctype="multipart/form-data">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group first">
-                    <label for="fname">Tên đăng nhập</label>
-                    <input type="text" class="form-control" placeholder="e.g. Nguyên Trịnh" id="fname">
+                    <label for="fname">Tên đăng nhập <span style="color: red">*</span></label>
+                    <input type="text" class="form-control" placeholder="Vd: Nguyễn Văn A" id="fname" name="fname">
                   </div>    
                 </div>
               </div>
@@ -27,21 +28,21 @@
                 <div class="col-md-6">
                   <div class="form-group first">
                     <label for="birthday">Ngày sinh</label>
-                    <input type="text" class="form-control" placeholder="e.g. 07/05/1995" id="birthday">
+                    <input type="text" class="form-control" placeholder="Vd: 01/01/2000" id="birthday" name="birthday">
                   </div>    
                 </div>
                 <div class="col-md-6">
                   <div class="form-group first">
                     <label for="avatar">Ảnh đại diện</label>
-  					<input type="file" id="avatar" name="avatar" alt="Ảnh đại diện" class="upload-btn form-control">
+  					<input type="file" id="avatar" name="file" alt="Ảnh đại diện" class="upload-btn form-control">
                   </div>    
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group first">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" placeholder="e.g. nguyentrinh@gmail.com" id="email">
+                    <label for="email">Email <span style="color: red">*</span></label>
+                    <input type="email" class="form-control" placeholder="Vd: nguyenvana@gmail.com" id="email" name="email">
                   </div>    
                 </div>
               </div>
@@ -49,14 +50,14 @@
                 <div class="col-md-12">
                   <div class="form-group first">
                     <label for="phone">Số điện thoại</label>
-                    <input type="text" class="form-control" placeholder="+00 0000 000 000" id="phone">
+                    <input type="text" class="form-control" placeholder="Vd: 0900 000 000" id="phone" name="phone">
                   </div>    
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group first">
-                    <label for="phone">Bạn là một</label>
+                    <label for="phone">Bạn là một <span style="color: red">*</span></label>
                     <select name="role" id="role" class="form-control">
     					<option value="customer">Thực khách</option>
     					<option value="manager">Quản lý</option>
@@ -77,29 +78,29 @@
                 <div class="col-md-6">
               
                   <div class="form-group last mb-3">
-                    <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Your Password" id="password">
+                    <label for="password">Mật khẩu <span style="color: red">*</span></label>
+                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="password" name="password">
                   </div>
                 </div>
                 <div class="col-md-6">
               
                   <div class="form-group last mb-3">
-                    <label for="re-password">Re-type Password</label>
-                    <input type="password" class="form-control" placeholder="Your Password" id="re-password">
+                    <label for="re-password">Nhập lại mật khẩu <span style="color: red">*</span></label>
+                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="re-password" name="re-password">
                   </div>
                 </div>
               </div>
               
               <div class="d-flex mb-5 mt-4 align-items-center">
                 <div class="d-flex align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Creating an account means you're okay with our <a href="#">Terms and Conditions</a> and our <a href="#">Privacy Policy</a>.</span>
-                  <input type="checkbox" checked="checked"/>
+                <label class="control control--checkbox mb-0"><span class="caption">Việc tạo tài khoản là bạn đã đồng ý với các <a href="#">Điều khoản, điều kiện</a> và <a href="#">Chính sách bảo mật</a> của chúng tôi.</span>
+                  <input type="checkbox" name="term" value="yes"/>
                   <div class="control__indicator"></div>
                 </label>
               </div>
               </div>
-
-              <input type="submit" value="Register" class="btn px-5 btn-primary">
+			  
+              <input type="submit" value="Đăng ký" class="btn px-5 btn-primary">
 
             </form>
           </div>

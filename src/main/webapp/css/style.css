@@ -444,7 +444,7 @@ ol {
 .header__menu ul li {
   list-style: none;
   display: inline-block;
-  margin-right: 50px;
+  margin-right: 20px;
   position: relative;
 }
 
@@ -753,10 +753,11 @@ ol {
   display: flex;
   align-items: center;
   padding-left: 75px;
+  padding-top: 44px;
 }
 
 .hero__text span {
-  font-size: 14px;
+  font-size: 18px;
   text-transform: uppercase;
   font-weight: 700;
   letter-spacing: 4px;
@@ -764,15 +765,17 @@ ol {
 }
 
 .hero__text h2 {
-  font-size: 46px;
-  color: #252525;
+  font-size: 50px;
+  color: #fff;
   line-height: 52px;
   font-weight: 700;
   margin: 10px 0;
 }
 
 .hero__text p {
-  margin-bottom: 35px;
+  margin-bottom: 30px;
+  color: #fff;
+  font-size: 20px;
 }
 
 /*---------------------
@@ -3503,4 +3506,8 @@ ol {
   .blog__details__hero__text h2 {
     font-size: 24px;
   }
+}
+
+.banner_image {
+	align-items: flex-start;
 }
