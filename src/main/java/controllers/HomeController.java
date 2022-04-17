@@ -2,6 +2,7 @@ package controllers;
 
 import java.io.UnsupportedEncodingException;
 import java.net.http.HttpRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -56,13 +57,8 @@ public class HomeController {
 		
 		//
 		RestaurantBL restaurantBL = new RestaurantBL();
-		List<Restaurant> listRestaurant;
-		if (request.getParameter("category") == null)
-			listRestaurant = restaurantBL.getAllRestaurants();
-		else {
-			int id_cat = Integer.parseInt(request.getParameter("category"));
-			listRestaurant = restaurantBL.getAllRestaurantsByCategory(id_cat,6);
-		}
+		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();
+		listRestaurant = restaurantBL.getTopRateRestaurants(12);
 		
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);

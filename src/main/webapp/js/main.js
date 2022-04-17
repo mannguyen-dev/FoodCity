@@ -9,8 +9,9 @@
 
 'use strict';
 
-(function ($) {
 
+(function ($) {
+	
     /*------------------
         Preloader
     --------------------*/

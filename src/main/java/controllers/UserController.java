@@ -118,19 +118,31 @@ public class UserController {
 			@RequestParam(name = "password",required = true) String password) {
 		UserBL uBL = new UserBL();
 		User u;
+		String mess = null;
+		
+		if (email.equals("")) 
+			mess = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Vui lòng nhập email/số điện thoại.";
+		else if (password.equals(""))
+			mess = "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Vui lòng nhập mật khẩu.";
+		if (mess != null) {
+			request.setAttribute("mess", mess);
+			return "login_section";
+		}
+		
+		
 		if (email.contains("@"))
 			u =  uBL.loginByEmail(email, password);
 		else
 			u = uBL.loginByPhone(email, password);
 		
 		if (u == null) {
-			request.setAttribute("mess", "Sai mật khẩu hoặc email/số điện thoại chưa đăng ký.");
+			request.setAttribute("mess", "<i class='fa fa-exclamation-triangle' aria-hidden='true'></i> Sai mật khẩu hoặc email/số điện thoại chưa đăng ký.");
 			return "login_section";
 		}
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", u);
-		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home'> trang chủ!  </a>");
+		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home'> Trang chủ!  </a>");
 		return "login_section";
 	}
 	

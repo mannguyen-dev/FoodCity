@@ -6,18 +6,18 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="section-title">
-              <h2>Featured Product</h2>
+              <h2>DEAL HÔM NAY</h2>
             </div>
-            <div class="featured__controls">
+            <!--<div class="featured__controls">
               <ul>
               <c:set var="i" value="${1 }"/>
-                <li class="active" data-filter="*">All</li>
+                
                 <c:forEach var="cat" items="${listCat }">
-                	<li data-filter=".category_${cat.idCategory }" ${(i>= 9)?"hidden":"" }>${cat.name }</li>
+                	<li ${(cat.idCategory == 1)?"class='active mixitup-control-active'":"" } data-filter=".category_${cat.idCategory }" ${(i>= 9)?"hidden":"" }>${cat.name }</li>
                 	<c:set var="i" value="${i+1 }"/>
                 </c:forEach>
               </ul>
-            </div>
+            </div> -->
           </div>
         </div>
         <div class="row featured__filter">
@@ -30,10 +30,14 @@
               >
                 <ul class="featured__item__pic__hover">
                   <li>
-                    <a href="#"><i class="fa fa-heart"></i></a>
+                  	
+                    <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-heart"></i></a>
+                  	
+                  	
+                    
                   </li>
                   <li>
-                    <a href="#"><i class="fa fa-retweet"></i></a>
+                    <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-retweet"></i></a>
                   </li>
                   <li>
                   <c:if test="${res.linkToBuy != null }">

@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>FoodCity | Thành phố ẩm thực</title>
-
+    <link rel="icon" href="img/favicon.png" />
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,300;0,400;0,600;0,900;1,800&display=swap" rel="stylesheet">
     <link
@@ -33,7 +33,9 @@
     <link rel="stylesheet" href="css/bootstrap2.min.css" type="text/css" /> 
     <link rel="stylesheet" href="css/owl2.carousel.min.css" type="text/css" />  
     <link rel="stylesheet" href="css/bootstrap2.min.css.map" type="text/css" /> 
-    <link rel="stylesheet" href="css/style2.css" type="text/css" />    
+    <link rel="stylesheet" href="css/style2.css" type="text/css" />   
+    
+    
   </head>
 
   <body>
@@ -82,7 +84,7 @@
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./shop-grid.jsp">Khám phá</a></li>
+          <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
           <li>
             <a href="#">Pages</a>
             <ul class="header__menu__dropdown">
@@ -128,7 +130,7 @@
                 <ul>
                 <c:if test="${not empty sessionScope.user}">
                   <li><i class="fa fa-envelope"></i> ${sessionScope.user.email }</li>
-                  <li>Xin chào, ${sessionScope.user.name }!</li>
+                  <li>Xin chào, <strong>${sessionScope.user.name }</strong>!</li>
                 </c:if>
                 <c:if test="${empty sessionScope.user }">
                   <li><i class="fa fa-envelope"></i> Chào mừng bạn đến với FoodCity</li>
@@ -186,7 +188,7 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./shop-grid.jsp">Khám phá</a></li>
+                <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
                 <li>
                   <a href="#">Pages</a>
                   <ul class="header__menu__dropdown">
@@ -202,19 +204,24 @@
             </nav>
           </div>
           <div class="col-lg-3">
+          <c:if test="${not empty sessionScope.user}">
             <div class="header__cart">
               <ul>
                 <li>
-                  <a href="#"><i class="fa fa-heart"></i> <span>1</span></a>
+                  <a href="#"><i class="fa fa-gift" aria-hidden="true"></i></i> <span>1</span></a>
                 </li>
                 <li>
                   <a href="#"
-                    ><i class="fa fa-shopping-bag"></i> <span>3</span></a
+                    ><i class="fa fa-inbox" aria-hidden="true"></i><span>3</span></a
                   >
                 </li>
               </ul>
-              <div class="header__cart__price">item: <span>$150.00</span></div>
+              <div class="header__cart__name"><span>${sessionScope.user.name }</span></div>
+              <div class="header__avatar">
+              	<a href="#"><img src="img/user/${sessionScope.user.avatar }" alt="user avatar"></a>
+              </div>
             </div>
+          </c:if>
           </div>
         </div>
         <div class="humberger__open">

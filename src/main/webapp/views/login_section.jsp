@@ -10,7 +10,7 @@
 
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-md-7">
+          <div class="col-md-8">
             <h3>Đăng nhập</h3>
             <p class="mb-4">Chào mửng bạn đến với <strong>Food City</strong> - Thế giới ẩm thực dành cho người sành ăn!</p>
             <p style="color:blue">${mess2}<p>
@@ -29,11 +29,14 @@
               
               
               <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
+                <label class="control control--checkbox mb-0"><span class="caption">Lưu đăng nhập</span>
                   <input type="checkbox" checked="checked"/>
                   <div class="control__indicator"></div>
                 </label>
-                <span class="ml-auto"><a href="login_page_forgot_pass.jsp" class="forgot-pass">Forgot Password</a></span> 
+                <span class="ml-auto">
+                	<a href="login_page_forgot_pass.jsp" class="forgot-pass" style="margin-right: 12px">Quên mật khẩu</a>
+                	<a href="signup_page.jsp" class="forgot-pass">Đăng ký</a>
+                </span>
               </div>
 
               <input type="submit" value="Đăng nhập" class="btn btn-block btn-primary">
