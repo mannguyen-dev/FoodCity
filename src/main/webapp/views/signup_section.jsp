@@ -49,7 +49,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group first">
-                    <label for="phone">Số điện thoại</label>
+                    <label for="phone">Số điện thoại <span style="color: red">*</span></label>
                     <input type="text" class="form-control" placeholder="Vd: 0900 000 000" id="phone" name="phone">
                   </div>    
                 </div>

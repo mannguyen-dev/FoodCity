@@ -756,7 +756,7 @@ ol {
 }
 
 .hero__search__form form input {
-  width: 70%;
+  width: 48%;
   border: none;
   height: 48px;
   font-size: 16px;
@@ -780,6 +780,13 @@ ol {
   right: 0;
   top: -1px;
   height: 100%;
+}
+
+.hero__search__form .Category{
+	width: 22%;
+	position: absolute;
+	right: 18.4%;
+	top: 8px;
 }
 
 .hero__search__phone {

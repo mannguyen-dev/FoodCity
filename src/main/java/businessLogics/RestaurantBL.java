@@ -150,9 +150,33 @@ public class RestaurantBL {
 		return list;
 	}
 	
+	public List<Restaurant> find(String name, String idCat, String ward, String district, String city){
+		List<Restaurant> list = new ArrayList<>();
+		String query = "select * from restaurant inner join address on restaurant.id_address = address.id_address where ";
+		if ( name != null && !name.equals("")) query += (query.endsWith("where ")?"":"and ") + "name like '%"+name+"%' ";
+		if (idCat != null && !idCat.equals("")) query += (query.endsWith("where ")?"":"and ") + "id_category = "+idCat;
+		if (ward != null && !ward.equals("")) query += (query.endsWith("where ")?"":"and ") + "ward = '"+ward+"' ";
+		if (district != null && !district.equals("")) query += (query.endsWith("where ")?"":"and ") + "district = '"+district+"' ";
+		if (city != null && !city.equals("")) query += (query.endsWith("where ")?"":"and ") + "city = '"+city+"' ";
+		System.out.println(query);
+		try {
+			new DBContext();
+			conn = DBContext.getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createRestaurant(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public static void main(String[] args) {
 		RestaurantBL bl = new RestaurantBL();
-		List<Restaurant> list = bl.getTopReviewRestaurants(6);
+		List<Restaurant> list = bl.find(null,"","","Quận 1","TP.HCM");
 		list.forEach(s->System.out.println(s.toString()));
 	}
 }

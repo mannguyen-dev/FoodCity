@@ -44,7 +44,7 @@ public class AddressBL {
 	
 	public List<String> getAllCity(){
 		List<String> list = new ArrayList<>();
-		String query = "select distinct city from address";
+		String query = "select distinct city from address order by city";
 		try {
 			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
@@ -61,7 +61,7 @@ public class AddressBL {
 	
 	public List<String> getAllDistrict(){
 		List<String> list = new ArrayList<>();
-		String query = "select distinct district from address";
+		String query = "select distinct district from address order by district";
 		try {
 			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
@@ -78,7 +78,7 @@ public class AddressBL {
 	
 	public List<String> getAllWard(){
 		List<String> list = new ArrayList<>();
-		String query = "select distinct ward from address";
+		String query = "select distinct ward from address order by ward";
 		try {
 			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);

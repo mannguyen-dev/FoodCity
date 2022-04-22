@@ -24,11 +24,17 @@
                 <div class="col-lg-9 col-md-7 khampha">
                     <div class="hero__search">
               			<div class="hero__search__form">
-                			<form action="#">
+                			<form action="restaurant-grid.jsp">
                   				<div class="hero__search__categories">
                     				<a>Thông tin</a>
                   				</div>
                   				<input type="text" name="txtSearch" placeholder="Nhà hàng, địa điểm, món ăn,..." />
+                  				<select name="category" id="category" class="form-control Category">
+    										<option value="">--Danh mục--</option>
+    										<c:forEach var="cat" items="${listCat }">
+    										<option value="${cat.idCategory }">${cat.name }</option>
+    										</c:forEach>
+  								</select>
                   				<div class="khuvuc">
                   					<div class="label hero__search__categories">
                     					<a>Khu vực</a>
@@ -61,17 +67,6 @@
                   				<button type="submit" class="site-btn">Tìm kiếm</button>
                 			</form>
               			</div>
-              			<!-- 
-	              		<div class="hero__search__phone">
-	                		<div class="hero__search__phone__icon">
-	                  			<i class="fa fa-phone"></i>
-	                		</div>
-	                		<div class="hero__search__phone__text">
-	                  			<h5>+65 11.188.888</h5>
-	                  			<span>support 24/7 time</span>
-	                		</div>
-	              		</div>
-	              		 -->
             		</div>
                     <div class="filter__item">
                         <div class="row">

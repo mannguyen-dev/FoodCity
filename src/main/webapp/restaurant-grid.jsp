@@ -4,6 +4,6 @@
     pageEncoding="UTF-8"%>
 <jsp:include page="views/header.jsp" />
 <jsp:include page="views/breadcrumb_section.jsp" />
-<jsp:include page="restaurant_grid" />
+<jsp:include page="find_restaurant" />
 <jsp:include page="product" />
 <jsp:include page="views/footer.jsp" />

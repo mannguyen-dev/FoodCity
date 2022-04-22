@@ -60,6 +60,8 @@ public class UserController {
 			warning = "Bạn chưa nhập tên. Vui lòng nhập lại thông tin!";
 		} else if (email.equals("")) {
 			warning = "Bạn chưa nhập email. Vui lòng nhập lại thông tin!";
+		} else if (phone.equals("")) {
+			warning = "Bạn chưa nhập số điện thoại. Vui lòng nhập lại thông tin!";
 		} else if (password.equals("")) {
 			warning = "Bạn chưa nhập password. Vui lòng nhập lại thông tin!";
 		} else if (!re_password.equals(password)) {
@@ -67,7 +69,7 @@ public class UserController {
 		//Check exist account
 		} else if (uBL.isExistEmail(email)) {
 			warning = "Email vừa nhập đã tồn tại trên hệ thống!";
-		} else if (uBL.isExistPhone(phone)) {
+		} else if (!phone.equals("") && uBL.isExistPhone(phone)) {
 			warning = "Số điện thoại vừa nhập đã tồn tại trên hệ thống!";
 		}
 		
@@ -101,7 +103,7 @@ public class UserController {
 		User u = new User(0,fname,password,date,(gender == "nam")?false:true,image,email,phone,(role=="customer")?3:2);
 		uBL.addUser(u);
 	
-		request.setAttribute("mess2", "Chúc mừng bạn đã đăng ký tài khoản thành công. Mời bạn đăng nhập!  </a>");
+		request.setAttribute("mess2", "Chúc mừng bạn đã đăng ký tài khoản thành công. Mời bạn đăng nhập!");
 		
 		return "login_section";
 	}

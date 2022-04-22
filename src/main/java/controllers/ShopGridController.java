@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import businessLogics.AddressBL;
 import businessLogics.CategoryBL;
@@ -45,6 +46,44 @@ public class ShopGridController {
 		else {
 			int id_cat = Integer.parseInt(request.getParameter("category"));
 			listRestaurant = restaurantBL.getAllRestaurantsByCategory(id_cat,6);
+		}
+		
+		//address
+		AddressBL addBL = new AddressBL();
+		List<String> listCity = addBL.getAllCity();
+		List<String> listDistrict = addBL.getAllDistrict();
+		List<String> listWard = addBL.getAllWard();
+		
+		request.setAttribute("listCat", listCategogy);
+		request.setAttribute("listRes", listRestaurant);
+		request.setAttribute("listCity", listCity);
+		request.setAttribute("listDist", listDistrict);
+		request.setAttribute("listWard", listWard);
+		
+		return "restaurant_grid_section";
+	}
+	
+	@RequestMapping({"/find_restaurant"})
+	public String findRestaurant(HttpServletRequest request,
+			@RequestParam(name = "txtSearch",required = false) String name,
+			@RequestParam(name = "category",required = false) String idCat,
+			@RequestParam(name = "ward",required = false) String ward,
+			@RequestParam(name = "district",required = false) String district,
+			@RequestParam(name = "city",required = false) String city) {
+		
+		
+		CategoryBL catBL = new CategoryBL();
+		List<Category> listCategogy = catBL.getAllCategory();
+		
+		//
+		RestaurantBL restaurantBL = new RestaurantBL();
+		List<Restaurant> listRestaurant;
+		if (request.getParameter("category") == null)
+			listRestaurant = restaurantBL.getAllRestaurants();
+		else {
+			//int id_cat = Integer.parseInt(request.getParameter("category"));
+			//listRestaurant = restaurantBL.getAllRestaurantsByCategory(id_cat,6);
+			listRestaurant = restaurantBL.find(name, idCat, ward, district, city);
 		}
 		
 		//address
