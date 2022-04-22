@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Hero Section Begin -->
     <section class="hero">
       <div class="container">
@@ -8,20 +9,12 @@
             <div class="hero__categories">
               <div class="hero__categories__all">
                 <i class="fa fa-bars"></i>
-                <span>All departments</span>
+                <span>Danh mục</span>
               </div>
               <ul>
-                <li><a href="#">Thịt tươi</a></li>
-                <li><a href="#">Vegetables</a></li>
-                <li><a href="#">Fruit & Nut Gifts</a></li>
-                <li><a href="#">Fresh Berries</a></li>
-                <li><a href="#">Ocean Foods</a></li>
-                <li><a href="#">Butter & Eggs</a></li>
-                <li><a href="#">Fastfood</a></li>
-                <li><a href="#">Fresh Onion</a></li>
-                <li><a href="#">Papayaya & Crisps</a></li>
-                <li><a href="#">Oatmeal</a></li>
-                <li><a href="#">Fresh Bananas</a></li>
+              <c:forEach var="cat" items="${listCat }">       
+                <li><a href="restaurant-grid.jsp?category=${cat.idCategory }"  class="cat__home"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp ${cat.name }</a></li>
+              </c:forEach>
               </ul>
             </div>
           </div>
@@ -30,29 +23,30 @@
               <div class="hero__search__form">
                 <form action="#">
                   <div class="hero__search__categories">
-                    All Categories
-                    <span class="arrow_carrot-down"></span>
+                    <i class="fa fa-filter" aria-hidden="true"></i>
+                    <a href="restaurant-grid.jsp">&nbspNÂNG CAO</a>
+                    
                   </div>
-                  <input type="text" placeholder="What do yo u need?" />
+                  <input type="text" placeholder="Địa điểm, món ăn, nhà hàng,..." />
                   <button type="submit" class="site-btn">Tìm kiếm</button>
                 </form>
               </div>
               <div class="hero__search__phone">
                 <div class="hero__search__phone__icon">
-                  <i class="fa fa-phone"></i>
+                  <a href="tel:02811118888"><i class="fa fa-phone"></i></a>
                 </div>
                 <div class="hero__search__phone__text">
-                  <h5>+65 11.188.888</h5>
-                  <span>support 24/7 time</span>
+                  <h5><a href="tel:02811118888" style="color: #495057">028 1111 8888</a></h5>
+                  <span>Điện thoại hỗ trợ 24/7</span>
                 </div>
               </div>
             </div>
-            <div class="hero__item set-bg" data-setbg="img/hero/banner.jpg">
+            <div class="hero__item set-bg banner_image" data-setbg="img/hero/banner2.jpg">
               <div class="hero__text">
-                <span>FRUIT FRESH</span>
-                <h2>Vegetable <br />100% Organic</h2>
-                <p>Free Pickup and Delivery Available</p>
-                <a href="#" class="primary-btn">SHOP NOW</a>
+                <span>FOOD CITY</span>
+                <h2>Thành phố ẩm thực</h2>
+                <p>Góc chia sẻ của những người sành ăn!</p>
+                <a href="restaurant-grid.jsp" class="primary-btn">THAM GIA NGAY</a>
               </div>
             </div>
           </div>
@@ -60,3 +54,24 @@
       </div>
     </section>
     <!-- Hero Section End -->
+    
+    <!-- Categories Section Begin -->
+    <section class="categories">
+      <div class="container">
+        <div class="row">
+          <div class="categories__slider owl-carousel">
+          <c:forEach var="cat" items="${listCat }">
+            <div class="col-lg-3">
+              <div
+                class="categories__item set-bg"
+                data-setbg="img/categories/${cat.image }"
+              >
+                <h5><a href="restaurant-grid.jsp?category=${cat.idCategory }">${cat.name }</a></h5>
+              </div>
+            </div>
+          </c:forEach>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Categories Section End -->

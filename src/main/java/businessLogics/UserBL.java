@@ -1,6 +1,7 @@
 package businessLogics;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -82,18 +83,83 @@ public class UserBL {
 		return null;
 	}
 	
+	public boolean isExistPhone(String phone){
+		String query = "SELECT * FROM `user` WHERE phone = ?";
+		boolean rt = true;
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, phone);
+			rs = ps.executeQuery();
+			rt = rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
+	}
+	
+	public boolean isExistEmail(String email){
+		String query = "SELECT * FROM `user` WHERE email = ?";
+		boolean rt = true;
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, email);
+			rs = ps.executeQuery();
+			rt = rs.next();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rt;
+	}
+	
+	public void addUser(User user){
+		String query = "insert into user (name, phone, email, avatar, gender, birthday, password, id_role) values (?, ?,?,?,?,?,?,?)";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getPhone());
+			ps.setString(3, user.getEmail());
+			ps.setString(4, user.getAvatar());
+			ps.setBoolean(5, user.isGender());
+			ps.setDate(6, user.getBirthday());
+			ps.setString(7, user.getPassword());
+			ps.setInt(8, user.getIdRole());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	
 	
 	public static void main(String[] args) {
 		UserBL bl = new UserBL();
 //		List<User> list = bl.getAll();
 //		list.forEach(s->System.out.println(s.toString()));
-		User u = bl.loginByEmail("ma","frr");
-		if (u!=null)System.out.println(u.toString());
-		User u2 = bl.loginByEmail("admin1@gmail.com","admin1");
-		if (u2!=null)System.out.println(u2.toString());
-		User u3 = bl.loginByPhone("0792887666","admin1");
-		if (u3!=null)System.out.println(u3.toString());
+//		User u = bl.loginByEmail("ma","frr");
+//		if (u!=null)System.out.println(u.toString());
+//		User u2 = bl.loginByEmail("admin1@gmail.com","admin1");
+//		if (u2!=null)System.out.println(u2.toString());
+//		User u3 = bl.loginByPhone("0792887666","admin1");
+//		if (u3!=null)System.out.println(u3.toString());
+//		User u = new User();
+//		u.setName("text");
+//		u.setEmail("text@gmail.com");
+//		u.setAvatar("abc.jpg");
+//		u.setIdRole(1);
+//		u.setGender(false);
+//		u.setPassword("123");aaaa
+//		u.setBirthday(new Date(1992, 1, 1));
+//		u.setPhone("22233445");
+//		bl.addUser(u);
+		
+		if (bl.isExistEmail("admin1@gmail.com")) System.out.println("Tai khoan ton tai");;
+		if (bl.isExistPhone("079288766")) System.out.println("Tai khoan ton tai");;
 		
 	}
 }
