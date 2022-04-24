@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import businessLogics.AddressBL;
 import businessLogics.CategoryBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
@@ -63,6 +64,15 @@ public class HomeController {
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
 		
+		//address
+		AddressBL addBL = new AddressBL();
+		List<String> listAdd = new ArrayList<String>(); 
+		for (int i = 0; i<listRestaurant.size();i++) {
+			String address = addBL.getStringAddress(listRestaurant.get(i).getIdAddress());
+			listAdd.add(address);
+		}
+		request.setAttribute("listAdd", listAdd);
+		
 		return "feature_section";
 	}
 	
@@ -87,6 +97,28 @@ public class HomeController {
 		request.setAttribute("topReviewRes", topReviewRestaurant);
 		
 		return "product_section";
+	}
+	
+	@RequestMapping({"/breadcrumb"})
+	public String breadcrumb(HttpServletRequest request,
+			@RequestParam(name = "pageInfo",required = true) String pageInfo) {
+		
+		//Set attribute
+		request.setAttribute("pageInfo", pageInfo);
+		
+		return "breadcrumb_section";
+	}
+	
+	@RequestMapping({"/search_bar"})
+	public String searchBar(HttpServletRequest request) {
+		
+		//Get category
+		CategoryBL categoryBL = new CategoryBL();
+		List<Category> listCategogy = categoryBL.getAllCategory();
+				
+		request.setAttribute("listCat", listCategogy);
+				
+		return "search_bar";
 	}
 	
 

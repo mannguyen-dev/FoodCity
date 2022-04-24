@@ -12,7 +12,7 @@
         <div class="row align-items-center justify-content-center">
           <div class="col-md-8">
             <h3>Đăng nhập</h3>
-            <p class="mb-4">Chào mửng bạn đến với <strong>Food City</strong> - Thế giới ẩm thực dành cho người sành ăn!</p>
+            <p class="mb-4">Chào mừng bạn đến với <strong>Food City</strong> - Thế giới ẩm thực dành cho người sành ăn!</p>
             <p style="color:blue">${mess2}<p>
             <c:if test="${empty sessionScope.user }">
             <form action="login_page.jsp" method="post">

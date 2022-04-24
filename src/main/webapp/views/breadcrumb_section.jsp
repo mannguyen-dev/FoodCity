@@ -10,10 +10,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Khám phá</h2>
+                        <h2>${pageInfo }</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.jsp">Trang chủ &nbsp</a>
-                            <span>Khám phá</span>
+                            <span>${pageInfo }</span>
                         </div>
                     </div>
                 </div>

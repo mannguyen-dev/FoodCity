@@ -21,6 +21,7 @@
           </div>
         </div>
         <div class="row featured__filter">
+        <c:set var="i" value="0"/>
         <c:forEach var="res" items="${listRes }">
           <div class="col-lg-3 col-md-4 col-sm-6 mix category_${res.idCategory } fresh-meat">
             <div class="featured__item">
@@ -47,11 +48,12 @@
                 </ul>
               </div>
               <div class="featured__item__text">
-                <h6><a href="#">${res.name }</a></h6>
-                <h5>$30.00</h5>
+                <h6><a href="#">${res.name}</a></h6>
+                <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
               </div>
             </div>
           </div>
+          <c:set value="${i+1 }" var="i" />
         </c:forEach>
         </div>
       </div>

@@ -24,6 +24,9 @@
 	<mvc:resources location="/img/user/" mapping="/img/user/*"/>
 	<mvc:resources location="/img/product/" mapping="/img/product/*"/>
 	<mvc:resources location="/img/product/discount/" mapping="/img/product/discount/*"/>
+	<mvc:resources location="/img/product/details/" mapping="/img/product/details/*"/>
+	<mvc:resources location="/img/blog/sidebar/" mapping="/img/blog/sidebar/*"/>
+	<mvc:resources location="/img/blog/details/" mapping="/img/blog/details/*"/>
 	
 	
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
