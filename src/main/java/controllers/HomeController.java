@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import businessLogics.AddressBL;
+import businessLogics.AdvertisementBL;
 import businessLogics.CategoryBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
+import javaBeans.Advertisement;
 import javaBeans.Category;
 import javaBeans.Restaurant;
 import javaBeans.User;
@@ -119,6 +121,18 @@ public class HomeController {
 		request.setAttribute("listCat", listCategogy);
 				
 		return "search_bar";
+	}
+	
+	@RequestMapping({"/banner"})
+	public String banner(HttpServletRequest request) {
+		
+		//Get category
+		AdvertisementBL adBL = new AdvertisementBL();
+		List<Advertisement> listAd = adBL.getAll();
+				
+		request.setAttribute("listAd", listAd);
+				
+		return "banner";
 	}
 	
 

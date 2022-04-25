@@ -899,7 +899,7 @@ ol {
   background: #ffffff;
 }
 
-.categories__slider.owl-carousel .owl-nav button.owl-next {
+.advertisement__slider.owl-carousel .owl-nav button.owl-next {
   left: auto;
   right: -35px;
 }
@@ -3612,4 +3612,31 @@ ol {
 	border-radius: 50%;
 	height: 40px;
 	width: 40px;
+}
+
+
+/**************/
+.banner .banner__pic{
+	width: 100% !important; 
+	height: 500px !important;
+}
+
+.banner .banner__pic img{
+	width: 100%; 
+	height: 100%;
+}
+
+.banner .section-title{
+	color:red !important;
+}
+
+.Uudai-title{
+	padding-left: 14px;
+	width: 100%;
+	height: 60px;
+}
+
+.Uudai-title h2{
+	font-weight: 700;
+	
 }

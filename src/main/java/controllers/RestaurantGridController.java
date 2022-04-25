@@ -18,7 +18,7 @@ import javaBeans.Category;
 import javaBeans.Restaurant;
 
 @Controller
-public class ShopGridController {
+public class RestaurantGridController {
 	@ModelAttribute
 	public void setUTF8(HttpServletRequest rq) {
 		try {
