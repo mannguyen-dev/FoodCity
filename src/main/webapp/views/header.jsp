@@ -84,7 +84,7 @@
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
+          <li><a href="./restaurant-grid.jsp?category=-1">Khám phá</a></li>
           <li><a href="./blog.html">Blog</a></li>
           <li>
           <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
@@ -190,7 +190,7 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
+                <li><a href="./restaurant-grid.jsp?category=-1">Khám phá</a></li>
                 <li><a href="./blog.jsp">Blog</a></li>
                 <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
                 <li>

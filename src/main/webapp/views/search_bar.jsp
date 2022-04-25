@@ -25,7 +25,7 @@
 	                <form action="restaurant-grid.jsp">
 	                  <div class="hero__search__categories">
 	                    <i class="fa fa-filter" aria-hidden="true"></i>
-	                    <a href="restaurant-grid.jsp">&nbspNÂNG CAO</a>
+	                    <a href="restaurant-grid.jsp?category=-1">&nbspNÂNG CAO</a>
 	                    
 	                  </div>
 	                  <input type="text" placeholder="Địa điểm, món ăn, nhà hàng,..." name="txtSearch"/>

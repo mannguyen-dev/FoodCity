@@ -13,7 +13,7 @@
                         <div class="sidebar__item">
                             <h4>Danh mục</h4>
                             <ul>
-                            	<li><a href="restaurant-grid.jsp" class="cat__list">Tất cả</a></li>
+                            	<li><a href="restaurant-grid.jsp?category=-1" class="cat__list">Tất cả</a></li>
                             <c:forEach var="cat" items="${listCat }">                            
                                 <li><a href="restaurant-grid.jsp?category=${cat.idCategory }" class="cat__list"><i class="fa fa-cutlery" aria-hidden="true"></i>&nbsp ${cat.name}</a></li>
                             </c:forEach>

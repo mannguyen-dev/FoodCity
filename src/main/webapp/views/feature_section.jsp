@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="section-title">
-              <h2>DEAL HÔM NAY</h2>
+              <h2>ĂN GÌ HÔM NAY?</h2>
             </div>
             <!--<div class="featured__controls">
               <ul>

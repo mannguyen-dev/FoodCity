@@ -899,7 +899,7 @@ ol {
   background: #ffffff;
 }
 
-.advertisement__slider.owl-carousel .owl-nav button.owl-next {
+.categories__slider.owl-carousel .owl-nav button.owl-next {
   left: auto;
   right: -35px;
 }
@@ -3630,10 +3630,16 @@ ol {
 	color:red !important;
 }
 
+.banner{
+	background-color: #fff4e6;
+	padding-bottom: 40px;
+}
+
 .Uudai-title{
 	padding-left: 14px;
+	padding-top: 30px;
 	width: 100%;
-	height: 60px;
+	height: 90px;
 }
 
 .Uudai-title h2{
