@@ -33,10 +33,10 @@
                 <ul class="featured__item__pic__hover">
                   <li>
                   	
-                    <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-heart"></i></a>
+                    <a href=${(empty sessionScope.user )?'login_page.jsp':('restaurant-details.jsp?idRes=') }${(empty sessionScope.user )?'':res.idRestaurant }><i class="fa fa-heart"></i></a>
                   </li>
                   <li>
-                    <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-retweet"></i></a>
+                    <a href=${(empty sessionScope.user )?'login_page.jsp':('restaurant-details.jsp?idRes=') }${(empty sessionScope.user )?'':res.idRestaurant }><i class="fa fa-retweet"></i></a>
                   </li>
                   <li>
                   <c:if test="${res.linkToBuy != null }">
@@ -47,7 +47,7 @@
               </div>
               <div class="featured__item__text">
               <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
-                <h6 class="sanpham_title"><span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span><a href="#">${res.name}</a></h6>
+                <h6 class="sanpham_title"><span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span><a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a></h6>
                 <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
               </div>
             </div>

@@ -5,9 +5,9 @@
 --%>
 
  <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/restaurant/${(res!=null?res.image:'breadcrumb.jpg') }">
         <div class="container">
-            <div class="row">
+            <div class="row breadcrumb__banner">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
                         <h2>${pageInfo }</h2>

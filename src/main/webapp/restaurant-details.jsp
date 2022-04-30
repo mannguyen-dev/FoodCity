@@ -8,6 +8,6 @@
 <jsp:include page="views/header.jsp" />
 <jsp:include page="search_bar" />
 <jsp:include page="breadcrumb?pageInfo=${pageInfo }" />
-<jsp:include page="views/restaurant_details_section.jsp" />
-<jsp:include page="views/related_restaurant_section.jsp" />
+<jsp:include page="restaurant_details" />
+<jsp:include page="related_restaurant" />
 <jsp:include page="views/footer.jsp" />

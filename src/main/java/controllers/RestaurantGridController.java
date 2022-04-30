@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -92,6 +93,14 @@ public class RestaurantGridController {
 		List<String> listDistrict = addBL.getAllDistrict();
 		List<String> listWard = addBL.getAllWard();
 		
+		//address
+		List<String> listAdd = new ArrayList<String>(); 
+		for (int i = 0; i<listRestaurant.size();i++) {
+			String address = addBL.getStringAddress(listRestaurant.get(i).getIdAddress());
+			listAdd.add(address);
+		}
+		
+		request.setAttribute("listAdd", listAdd);
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
 		request.setAttribute("listCity", listCity);

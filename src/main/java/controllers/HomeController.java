@@ -104,7 +104,13 @@ public class HomeController {
 	@RequestMapping({"/breadcrumb"})
 	public String breadcrumb(HttpServletRequest request,
 			@RequestParam(name = "pageInfo",required = true) String pageInfo) {
-		
+		// restaurant
+		if (request.getParameter("idRes") != null) {
+			int idRes = Integer.parseInt(request.getParameter("idRes"));
+			RestaurantBL resBL = new RestaurantBL();
+			Restaurant res = resBL.getById(idRes);
+			request.setAttribute("res", res);
+		}
 		//Set attribute
 		request.setAttribute("pageInfo", pageInfo);
 		

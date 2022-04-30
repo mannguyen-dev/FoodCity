@@ -11,7 +11,7 @@
                 <div class="latest-prdouct__slider__item">
                 <c:set var="i" value="${1 }" />
                 <c:forEach var="res" items="${latestRes }">
-                  <a href="#" class="latest-product__item">
+                  <a href="restaurant-details.jsp?idRes=${res.idRestaurant}" class="latest-product__item">
                     <div class="latest-product__item__pic">
                       <img src="img/restaurant/${res.image }" alt="${res.name }" />
                     </div>
@@ -37,7 +37,7 @@
                 <div class="latest-prdouct__slider__item">
                 <c:set var="i" value="${1 }" />
                 <c:forEach var="res2" items="${topRateRes }">
-                  <a href="#" class="latest-product__item">
+                  <a href="restaurant-details.jsp?idRes=${res2.idRestaurant}" class="latest-product__item">
                     <div class="latest-product__item__pic">
                       <img src="img/restaurant/${res2.image }" alt="${res2.name }" />
                     </div>
@@ -64,7 +64,7 @@
                 <div class="latest-prdouct__slider__item">
                   <c:set var="i" value="${1 }" />
                 <c:forEach var="res3" items="${topReviewRes }">
-                  <a href="#" class="latest-product__item">
+                  <a href="restaurant-details.jsp?idRes=${res3.idRestaurant}" class="latest-product__item">
                     <div class="latest-product__item__pic">
                       <img src="img/restaurant/${res3.image }" alt="${res3.name }" />
                     </div>

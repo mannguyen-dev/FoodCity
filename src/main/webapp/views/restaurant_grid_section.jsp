@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%-- 
     Document   : breadcrumb
 --%>
@@ -95,13 +96,14 @@
                     <div class="row featured__filter">
                     <c:set var="pageNum" value="1" />
                     <c:set var="itemNum" value="1" />
+                    <c:set var="i" value="0" />
                     <c:forEach var="res" items="${listRes }">
                         <div class="col-lg-4 col-md-6 col-sm-6 mix page${pageNum }" ${((pageNum != 1)?'style=\'display: none;\'':'')}>
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="img/restaurant/${res.image }">
                                     <ul class="product__item__pic__hover">
-                                        <li><a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-heart"></i></a></li>
-                                        <li><a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href=${(empty sessionScope.user )?'login_page.jsp':('restaurant-details.jsp?idRes=') }${(empty sessionScope.user )?'':res.idRestaurant }><i class="fa fa-heart"></i></a></li>
+                                        <li><a href=${(empty sessionScope.user )?'login_page.jsp':('restaurant-details.jsp?idRes=') }${(empty sessionScope.user )?'':res.idRestaurant }><i class="fa fa-retweet"></i></a></li>
                                         <c:if test="${res.linkToBuy != null }">
                                         <li><a href="${res.linkToBuy}"><i class="fa fa-shopping-cart"></i></a></li>
                   						</c:if>
@@ -109,10 +111,12 @@
                                 </div>
                                 <div class="product__item__text">
                                     <h6 class="sanpham_title">
-                                    	<span class="hero__search__phone__icon">${(res.reviewCount!=0?res.stars/res.reviewCount:'...')}</span>
-                                    	<a href="#">${res.name}</a>
+                                    <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
+                                    	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
+                                    	<a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
                                     </h6>
                                     <h5>$30.00</h5>
+                                    <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
                                 </div>
                             </div>
                         </div>
@@ -121,12 +125,13 @@
                         	<c:set var="pageNum" value="${pageNum +1 }"/>
                         </c:if>
                         <c:set var="itemNum" value="${itemNum+1 }"/>
+                        <c:set var="i" value="${i+1 }"/>
                     </c:forEach>
                     </div>
                     <div class="product__pagination featured__controls">
                     	<ul>
                     	<c:forEach var="i" step="1" begin="1" end="${listRes.size()/9+1}">
-	                        <li><a href="#my__product" data-filter=".page${i }" class="mixitup-control-active">${i }</a></li>
+	                        <li ${(i==1?'class=\'active\'':'') }><a href="#my__product" data-filter=".page${i }">${i }</a></li>
                     	</c:forEach>
                     	</ul>
                     </div>

@@ -2,4 +2,5 @@ eclipse.preferences.version=1
 encoding//src/main/java/businessLogics/RestaurantBL.java=UTF-8
 encoding//src/main/java/controllers/HomeController.java=UTF-8
 encoding//src/main/java/controllers/UserController.java=UTF-8
+encoding//src/main/webapp/views/related_restaurant_section.jsp=UTF-8
 encoding//src/main/webapp/views/restaurant_details_section.jsp=UTF-8

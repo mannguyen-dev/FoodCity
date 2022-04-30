@@ -965,7 +965,7 @@ ol {
 .featured__item__pic__hover {
   position: absolute;
   left: 0;
-  bottom: -50px;
+  bottom: -60px;
   width: 100%;
   text-align: center;
   -webkit-transition: all, 0.5s;
@@ -1139,7 +1139,7 @@ ol {
 .breadcrumb-section {
   display: flex;
   align-items: center;
-  padding: 45px 0 40px;
+  padding: 25px 0 20px;
 }
 
 .breadcrumb__text h2 {
@@ -1405,7 +1405,7 @@ ol {
 .product__item__pic__hover {
   position: absolute;
   left: 0;
-  bottom: -50px;
+  bottom: -60px;
   width: 100%;
   text-align: center;
   -webkit-transition: all, 0.5s;
@@ -1645,7 +1645,7 @@ ol {
 .product__item__pic__hover {
   position: absolute;
   left: 0;
-  bottom: -50px;
+  bottom: -70px;
   width: 100%;
   text-align: center;
   -webkit-transition: all, 0.5s;
@@ -3654,4 +3654,19 @@ ol {
 
 .sanpham_title a{
 	width: 185px;
+}
+
+.breadcrumb__banner{
+	background-color: rgba(40, 40, 40, 0.3);
+	padding-top: 12px;
+	padding-bottom: 12px
+}
+
+.restaurant__description{
+	column-count: 2;
+	column-gap: 16px;
+}
+
+.restaurant__description br{
+	margin-bottom: 16px;
 }
