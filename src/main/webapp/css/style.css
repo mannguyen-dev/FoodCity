@@ -3646,3 +3646,12 @@ ol {
 	font-weight: 700;
 	
 }
+
+.sanpham_title{
+	display: flex;
+	align-items: center;
+}
+
+.sanpham_title a{
+	width: 185px;
+}

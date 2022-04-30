@@ -78,7 +78,9 @@ public class RestaurantGridController {
 		//
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant;
-		if (idCat != null && idCat.equals("-1"))
+		if (idCat == null) {
+			listRestaurant = restaurantBL.find(name, idCat, ward, district, city);
+		}else if (idCat.equals("-1"))
 			listRestaurant = restaurantBL.getAllRestaurants();
 		else {
 			listRestaurant = restaurantBL.find(name, idCat, ward, district, city);

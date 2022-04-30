@@ -1,5 +1,6 @@
   <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
     <!-- Featured Section Begin -->
     <section class="featured spad">
       <div class="container">
@@ -33,9 +34,6 @@
                   <li>
                   	
                     <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-heart"></i></a>
-                  	
-                  	
-                    
                   </li>
                   <li>
                     <a href=${(empty sessionScope.user )?'login_page.jsp':'#' }><i class="fa fa-retweet"></i></a>
@@ -48,7 +46,8 @@
                 </ul>
               </div>
               <div class="featured__item__text">
-                <h6><a href="#">${res.name}</a></h6>
+              <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
+                <h6 class="sanpham_title"><span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span><a href="#">${res.name}</a></h6>
                 <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
               </div>
             </div>
