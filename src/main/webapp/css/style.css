@@ -803,7 +803,8 @@ ol {
   text-align: center;
   border-radius: 50%;
   float: left;
-  margin-right: 16px;
+  margin-right: 8px;
+  margin-left: 8px;
 }
 
 .hero__search__phone__text {
@@ -1046,8 +1047,8 @@ ol {
 -----------------------*/
 
 .latest-product {
-  padding-top: 80px;
-  padding-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 30px;;
 }
 
 .latest-product__text h4 {
@@ -1090,17 +1091,16 @@ ol {
 
 .latest-product__item__pic {
   float: left;
-  margin-right: 26px;
+  margin-right: 18px;
 }
 
 .latest-product__item__pic img {
   height: 110px;
-  width: 110px;
+  width: 90px;
 }
 
 .latest-product__item__text {
   overflow: hidden;
-  padding-top: 10px;
 }
 
 .latest-product__item__text h6 {
@@ -3650,6 +3650,7 @@ ol {
 .sanpham_title{
 	display: flex;
 	align-items: center;
+	height: 60px;
 }
 
 .sanpham_title a{
@@ -3669,4 +3670,116 @@ ol {
 
 .restaurant__description br{
 	margin-bottom: 16px;
+}
+
+.album__tittle{
+	padding-top:20px;
+	color:#e67700;
+}
+
+.product__details__tab__desc .container{
+	background-color: #fff4e6;
+	padding-bottom:20px;
+}
+
+.comment__section{
+	padding-left: 16%;
+	padding-right:16%;
+}
+
+.media-list li{
+	margin-bottom: 20px;
+}
+
+.media-list .img-circle{
+	border-radius: 50%;
+	margin-right:20px;
+	height: 80px;
+	width: 80px;
+}
+
+.danh__gia{
+	display: flex;
+	gap: 12px;
+	align-items: center;
+	margin-bottom: 12px;
+	margin-top:12px;
+}
+
+.panel-heading{
+	font-size: 28px;
+	color: #e67700;
+}
+
+.binhluan_title{
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+}
+
+.media-list .media{
+	border: 2px solid #ced4da;
+	border-radius: 8px;
+	padding: 8px;
+}
+
+.text-username{
+	color:#f08c00;
+}
+
+.thongtin__nhahang{
+	display: flex;
+	gap:20px;
+	flex-direction: column;
+	margin-bottom: 40px;
+}
+
+.thongtin__nhahang div{
+	display: flex;
+	gap:16px;
+	align-items: center;
+	font-size: 20px;
+}
+
+.thongtin__nhahang i{
+	margin-right: 4px;
+	font-size: 24px;
+	width: 20px;
+	color: #f08c00;
+}
+
+.thongtin__nhahang strong{
+	color:#495057;
+}
+
+.thongtin__danhgia{
+	font-size: 24px;
+}
+
+.thongtin__danhgia span{
+	color: #e67e22;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.product__item{
+	border-radius: 4px;
+	height: 90%;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.product__item__pic{
+	border-radius: 4px 4px 0 0;
+}
+
+.noibat__nhahang{
+	font-size: 12px;
+	margin-bottom: 12px;
+}
+
+.latest-product__item{
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	width: 97%;
+	border-radius: 4px;
+	border-top:1px solid #eee;
 }

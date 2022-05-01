@@ -15,10 +15,14 @@ import businessLogics.AddressBL;
 import businessLogics.CategoryBL;
 import businessLogics.ImageBL;
 import businessLogics.RestaurantBL;
+import businessLogics.ReviewBL;
+import businessLogics.UserBL;
 import javaBeans.Address;
 import javaBeans.Category;
 import javaBeans.Image;
 import javaBeans.Restaurant;
+import javaBeans.Review;
+import javaBeans.User;
 
 @Controller
 public class RestaurantDetailsController {
@@ -46,6 +50,18 @@ public class RestaurantDetailsController {
 		AddressBL addBL = new AddressBL();
 		String address = addBL.getStringAddress(restaurant.getIdAddress()); 
 		
+		// get poster
+		UserBL uBL = new UserBL();
+		User u = uBL.getById(restaurant.getIdUser());
+		
+		//getReview
+		ReviewBL reBL = new ReviewBL();
+		List<Review> listReview = reBL.getByIdRestaurant(idRes, 8);
+		List<User> listUserReview = new ArrayList<User>();
+		for(Review review: listReview) {
+			listUserReview.add(uBL.getById(review.getIdUser()));
+		}
+				
 		
 		// get images
 		ImageBL imageBL = new ImageBL();
@@ -60,6 +76,9 @@ public class RestaurantDetailsController {
 		request.setAttribute("listFoodImg", listFoodImg);
 		request.setAttribute("listReviewImg", listReviewImg);
 		request.setAttribute("address", address);
+		request.setAttribute("poster", u);
+		request.setAttribute("listReview", listReview);
+		request.setAttribute("listUserReview", listUserReview);
 		
 		return "restaurant_details_section";
 	}
@@ -74,9 +93,9 @@ public class RestaurantDetailsController {
 		
 		//address
 		AddressBL addBL = new AddressBL();
-		List<String> listAdd = new ArrayList<String>(); 
+		List<Address> listAdd = new ArrayList<>(); 
 		for (int i = 0; i<listRes.size();i++) {
-			String address = addBL.getStringAddress(listRes.get(i).getIdAddress());
+			Address address = addBL.getAddress(listRes.get(i).getIdAddress());
 			listAdd.add(address);
 		}
 		
@@ -85,5 +104,19 @@ public class RestaurantDetailsController {
 		request.setAttribute("listRes", listRes);
 		
 		return "related_restaurant_section";
+	}
+
+	@RequestMapping({"/post_review"})
+	public String postReview(HttpServletRequest request,
+			@RequestParam(name = "idRes",required = true) int idRes,
+			@RequestParam(name = "idUser",required = true) int idUser,
+			@RequestParam(name = "stars",required = true) int stars,
+			@RequestParam(name = "title",required = true) String title,
+			@RequestParam(name = "content",required = true) String content) {
+
+		ReviewBL reBL = new ReviewBL();
+		reBL.postCommentRestaurant(title, content, stars, idRes, idUser);
+		
+		return "redirect:/restaurant-details.jsp?idRes="+idRes;
 	}
 }

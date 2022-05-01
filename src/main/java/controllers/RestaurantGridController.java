@@ -94,9 +94,9 @@ public class RestaurantGridController {
 		List<String> listWard = addBL.getAllWard();
 		
 		//address
-		List<String> listAdd = new ArrayList<String>(); 
+		List<Address> listAdd = new ArrayList<Address>(); 
 		for (int i = 0; i<listRestaurant.size();i++) {
-			String address = addBL.getStringAddress(listRestaurant.get(i).getIdAddress());
+			Address address = addBL.getAddress(listRestaurant.get(i).getIdAddress());
 			listAdd.add(address);
 		}
 		

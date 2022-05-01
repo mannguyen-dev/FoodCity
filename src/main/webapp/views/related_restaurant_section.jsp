@@ -11,7 +11,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="justify-content: center;">
             <c:set var="i" value="0"/>
             <c:forEach var="res" items="${listRes }">
                 <div class="col-lg-3 col-md-4 col-sm-6">
@@ -31,8 +31,7 @@
                             	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
                             	<a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
                             </h6>
-                            <h5>$30.00</h5>
-                            <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
+		                    <div class="thongtin__diachi" style="color: #868e96;"><i class="fa fa-map-marker" aria-hidden="true">&nbsp;&nbsp;</i>${listAdd[i].district }, ${listAdd[i].city }</div>
                         </div>
                     </div>
                 </div>

@@ -12,7 +12,7 @@
 	        <c:forEach var="ad" items="${listAd }">
 	          <div class="col-lg-12 col-md-12 col-sm-12">
 	            <div class="banner__pic"> 
-	            	<a href="#">
+	            	<a href="restaurant-details.jsp?idRes=${ad.idRestaurant }">
 	              		<img src="img/advertisement/${ad.image }" alt="" />
 	            	</a>
 	            </div>

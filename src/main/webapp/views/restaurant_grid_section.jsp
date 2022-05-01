@@ -110,14 +110,13 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6 class="sanpham_title">
-                                    <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
-                                    	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
-                                    	<a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
-                                    </h6>
-                                    <h5>$30.00</h5>
-                                    <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
-                                </div>
+		                            <h6 class="sanpham_title">
+		                            <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
+		                            	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
+		                            	<a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
+		                            </h6>
+				                    <div class="thongtin__diachi" style="color: #868e96;"><i class="fa fa-map-marker" aria-hidden="true">&nbsp;&nbsp;</i>${listAdd[i].district }, ${listAdd[i].city }</div>
+		                        </div>
                             </div>
                         </div>
                         <c:if test="${itemNum == 9 }">

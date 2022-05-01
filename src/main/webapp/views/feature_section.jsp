@@ -25,12 +25,12 @@
         <c:set var="i" value="0"/>
         <c:forEach var="res" items="${listRes }">
           <div class="col-lg-3 col-md-4 col-sm-6 mix category_${res.idCategory } fresh-meat">
-            <div class="featured__item">
+            <div class="product__item">
               <div
-                class="featured__item__pic set-bg"
+                class="product__item__pic set-bg"
                 data-setbg="img/restaurant/${res.image }"
               >
-                <ul class="featured__item__pic__hover">
+                <ul class="product__item__pic__hover">
                   <li>
                   	
                     <a href=${(empty sessionScope.user )?'login_page.jsp':('restaurant-details.jsp?idRes=') }${(empty sessionScope.user )?'':res.idRestaurant }><i class="fa fa-heart"></i></a>
@@ -45,10 +45,13 @@
                   </li>
                 </ul>
               </div>
-              <div class="featured__item__text">
-              <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
-                <h6 class="sanpham_title"><span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span><a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a></h6>
-                <p style="font-size: 12px"><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i] }</p>
+              <div class="product__item__text">
+                 <h6 class="sanpham_title">
+	                 <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
+	                 <span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
+	                 <a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
+                 </h6>
+                 <div class="thongtin__diachi" style="color: #868e96;"><i class="fa fa-map-marker" aria-hidden="true">&nbsp;&nbsp;</i>${listAdd[i].district }, ${listAdd[i].city }</div>
               </div>
             </div>
           </div>

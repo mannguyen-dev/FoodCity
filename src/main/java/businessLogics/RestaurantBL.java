@@ -22,7 +22,7 @@ public class RestaurantBL {
 		restaurant.setName(rs.getString("name"));
 		restaurant.setDescription(rs.getString("description"));
 		restaurant.setIdAddress(rs.getInt("id_address"));
-		restaurant.setStars(rs.getFloat("stars"));
+		restaurant.setStars(rs.getInt("stars"));
 		restaurant.setReviewCount(rs.getInt("review_count"));
 		restaurant.setImage(rs.getString("image"));
 		restaurant.setOpenTime(rs.getString("open_time"));

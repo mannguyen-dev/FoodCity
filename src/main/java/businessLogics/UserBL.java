@@ -47,6 +47,24 @@ public class UserBL {
 		return list;
 	}
 	
+	public User getById(int idUser){
+		User user = null;
+		String query = "select * from user where id_user=?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idUser);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				user = createUser(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
 	public User loginByEmail(String email, String password){
 		String query = "SELECT * FROM `user` WHERE email = ? and password = ?";
 		try {

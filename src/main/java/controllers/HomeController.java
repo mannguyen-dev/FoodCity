@@ -20,6 +20,7 @@ import businessLogics.AdvertisementBL;
 import businessLogics.CategoryBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
+import javaBeans.Address;
 import javaBeans.Advertisement;
 import javaBeans.Category;
 import javaBeans.Restaurant;
@@ -68,9 +69,9 @@ public class HomeController {
 		
 		//address
 		AddressBL addBL = new AddressBL();
-		List<String> listAdd = new ArrayList<String>(); 
+		List<Address> listAdd = new ArrayList<Address>(); 
 		for (int i = 0; i<listRestaurant.size();i++) {
-			String address = addBL.getStringAddress(listRestaurant.get(i).getIdAddress());
+			Address address = addBL.getAddress(listRestaurant.get(i).getIdAddress());
 			listAdd.add(address);
 		}
 		request.setAttribute("listAdd", listAdd);
