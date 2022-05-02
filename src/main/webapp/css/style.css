@@ -146,8 +146,8 @@ ol {
 }
 
 .spad {
-  padding-top: 100px;
-  padding-bottom: 100px;
+  padding-top: 80px;
+  padding-bottom: 80px;
 }
 
 .text-white h1,
@@ -1121,7 +1121,7 @@ ol {
 
 .from-blog {
   padding-top: 50px;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 
 .from-blog .blog__item {
@@ -2393,6 +2393,8 @@ ol {
 
 .blog__item__pic img {
   min-width: 100%;
+  height: 300px;
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .blog__item__text {
@@ -2417,6 +2419,7 @@ ol {
 
 .blog__item__text h5 {
   margin-bottom: 12px;
+  height: 48px;
 }
 
 .blog__item__text h5 a {
@@ -2427,6 +2430,7 @@ ol {
 
 .blog__item__text p {
   margin-bottom: 25px;
+  height: 80px;
 }
 
 .blog__item__text .blog__btn {
@@ -2467,11 +2471,12 @@ ol {
 -----------------------*/
 
 .blog__sidebar {
-  padding-top: 50px;
+  padding-top: 0;
 }
 
 .blog__sidebar__item {
   margin-bottom: 50px;
+  padding-left: 16px;
 }
 
 .blog__sidebar__item h4 {
@@ -2551,8 +2556,14 @@ ol {
   margin-right: 20px;
 }
 
+.blog__sidebar__recent__item__pic img{
+  height: 70px;
+  width: 70px;
+}
+
 .blog__sidebar__recent__item__text {
   overflow: hidden;
+  width: 220px;
 }
 
 .blog__sidebar__recent__item__text h6 {
@@ -2639,7 +2650,6 @@ ol {
 .blog-details {
   padding-bottom: 75px;
   border-bottom: 1px solid #e1e1e1;
-  margin-top: 30px;
 }
 
 .blog__details__text {
@@ -3780,8 +3790,8 @@ ol {
 
 .latest-product__item{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-	width: 97%;
 	border-radius: 4px;
+	width: 97%;
 	border-top:1px solid #eee;
 }
 
@@ -3804,4 +3814,11 @@ ol {
 .chude__blog{
 	margin-bottom: 24px;
 	font-size: 24px;
+}
+
+.ketqua__tim{
+	margin-bottom: 20px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid #ddd;
+	font-style: italic;
 }

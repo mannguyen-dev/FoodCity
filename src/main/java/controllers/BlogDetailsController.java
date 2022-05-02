@@ -64,4 +64,50 @@ public class BlogDetailsController {
 		
 		return "blog_details_section";
 	}
+	
+	@RequestMapping({"/blog_section_grid"})
+	public String blogSectionGrid(HttpServletRequest request) {
+        int trang =1;
+        int idCat =-1;
+        String txtSearch = "";
+        if (request.getParameter("page")!=null)
+        	trang = Integer.parseInt(request.getParameter("page"));
+        if (request.getParameter("idCat")!=null)
+        	idCat = Integer.parseInt(request.getParameter("idCat"));
+        if (request.getParameter("txtSearch")!=null)
+        	txtSearch = request.getParameter("txtSearch");
+		//get blog
+		BlogBL blogBL = new BlogBL();
+		List<Blog> listBlog;
+		
+		if (txtSearch != "")
+			listBlog = blogBL.findByTitle(txtSearch);
+		else if (idCat != -1) {
+			listBlog = blogBL.getByCategory(idCat);
+			CategoryBL catBL = new CategoryBL();
+			request.setAttribute("category", catBL.getById(idCat));
+		}else
+			listBlog = blogBL.getAll();
+		
+		int tsd = listBlog.size();
+        int sdt = 6;
+        int tst = tsd/sdt + (tsd%sdt!=0?1:0);
+        listBlog = listBlog.subList((trang-1)*sdt, (trang*sdt>tsd?((trang-1)*sdt+tsd%sdt):trang*sdt));
+		
+		//get blog outstanding
+		List<Blog> listOutStanding = blogBL.getOutstanding(5);
+	
+		//get list cat and this cat
+		List<String> listCatAndAmt = blogBL.getStringBlogCategory();
+		
+		//set attribute
+		request.setAttribute("listBlog", listBlog);
+		request.setAttribute("page", trang);
+		request.setAttribute("totalPage", tst);
+		request.setAttribute("listOutStanding", listOutStanding);
+		request.setAttribute("listCatAndAmt", listCatAndAmt);
+		
+		return "blog_section_grid";
+	}
+	
 }

@@ -7,5 +7,5 @@
 <jsp:include page="views/header.jsp" />
 <jsp:include page="search_bar" />
 <jsp:include page="breadcrumb?pageInfo=${pageInfo }" />
-<jsp:include page="views/blog_section_grid.jsp" />
+<jsp:include page="blog_section_grid" />
 <jsp:include page="views/footer.jsp" />

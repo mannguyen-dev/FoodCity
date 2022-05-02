@@ -11,6 +11,13 @@ public class Blog {
 	private int idUser;
 	private Date date;
 	private int idCategory;
+	private int cmtCount;
+	public int getCmtCount() {
+		return cmtCount;
+	}
+	public void setCmtCount(int cmtCount) {
+		this.cmtCount = cmtCount;
+	}
 	public int getIdBlog() {
 		return idBlog;
 	}
@@ -59,8 +66,17 @@ public class Blog {
 	public void setIdCategory(int idCategory) {
 		this.idCategory = idCategory;
 	}
+	public Blog() {
+		super();
+	}
+	@Override
+	public String toString() {
+		return "Blog [idBlog=" + idBlog + ", title=" + title + ", subTitle=" + subTitle + ", content=" + content
+				+ ", coverImg=" + coverImg + ", idUser=" + idUser + ", date=" + date + ", idCategory=" + idCategory
+				+ ", cmtCount=" + cmtCount + "]";
+	}
 	public Blog(int idBlog, String title, String subTitle, String content, String coverImg, int idUser, Date date,
-			int idCategory) {
+			int idCategory, int cmtCount) {
 		super();
 		this.idBlog = idBlog;
 		this.title = title;
@@ -70,14 +86,6 @@ public class Blog {
 		this.idUser = idUser;
 		this.date = date;
 		this.idCategory = idCategory;
-	}
-	public Blog() {
-		super();
-	}
-	@Override
-	public String toString() {
-		return "Blog [idBlog=" + idBlog + ", title=" + title + ", subTitle=" + subTitle + ", content=" + content
-				+ ", coverImg=" + coverImg + ", idUser=" + idUser + ", date=" + date + ", idCategory=" + idCategory
-				+ "]";
+		this.cmtCount = cmtCount;
 	}
 }

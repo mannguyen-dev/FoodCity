@@ -1,7 +1,7 @@
    <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Blog Details Section Begin -->
-    <section class="blog-details">
+    <section class="blog-details spad">
     	<div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-5 order-md-1 order-2">
@@ -15,9 +15,9 @@
                         <div class="blog__sidebar__item">
                             <h4>Danh mục</h4>
                             <ul>
-                                <li><a href="#">Tất cả</a></li>
-                                <c:forEach var="i" begin="0" end="${listCatAndAmt.size()-1 }" step="2">
-                                <li><a href="#">${listCatAndAmt[i] } (${listCatAndAmt[i+1] })</a></li>
+                                <li><a href="blog.jsp">Tất cả</a></li>
+                                <c:forEach var="i" begin="0" end="${listCatAndAmt.size()-1 }" step="3">
+                                <li><a href="blog.jsp?idCat=${listCatAndAmt[i+2] }">${listCatAndAmt[i] } (${listCatAndAmt[i+1] })</a></li>
                                 </c:forEach>
                             </ul>
                         </div>
@@ -96,7 +96,7 @@
                                 <div class="blog__details__widget">
                                     <ul>
                                         <li><span>Danh mục:</span> ${thisCat.name }</li>
-                                        <li><span>Tags:</span> All, Trending, Cooking, Healthy Food, Life Style</li>
+                                        <li><span>Tags:</span> All, Trending, Cooking, Healthy Food</li>
                                     </ul>
                                     <div class="blog__details__social">
                                         <a href="#"><i class="fa fa-facebook"></i></a>

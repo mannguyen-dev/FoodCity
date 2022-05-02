@@ -17,11 +17,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import businessLogics.AddressBL;
 import businessLogics.AdvertisementBL;
+import businessLogics.BlogBL;
 import businessLogics.CategoryBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
 import javaBeans.Address;
 import javaBeans.Advertisement;
+import javaBeans.Blog;
 import javaBeans.Category;
 import javaBeans.Restaurant;
 import javaBeans.User;
@@ -142,5 +144,15 @@ public class HomeController {
 		return "banner";
 	}
 	
-
+	@RequestMapping({"/blog_section"})
+	public String blogSection(HttpServletRequest request) {
+		
+		//Get Blog
+		BlogBL blogBL = new BlogBL();
+		List<Blog> listBlog = blogBL.getAll(3);
+				
+		request.setAttribute("listBlog", listBlog);
+				
+		return "blog_section";
+	}
 }
