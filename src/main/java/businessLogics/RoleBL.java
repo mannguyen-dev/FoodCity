@@ -33,9 +33,31 @@ public class RoleBL {
 		return list;
 	}
 	
+	public Role getByIdRole(int idRole){
+		Role role = null;
+		String query = "select * from role where id_role=?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idRole);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				role = new Role(rs.getInt("id_role"),
+						rs.getString("name"),
+						rs.getString("description"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return role;
+	}
+	
 	public static void main(String[] args) {
 		RoleBL r = new RoleBL();
-		List<Role> list = r.getAllRole();
-		list.forEach(s->System.out.println(s.toString()));
+//		List<Role> list = r.getAllRole();
+//		list.forEach(s->System.out.println(s.toString()));
+		Role role = r.getByIdRole(1);
+		System.out.println(role);
 	}
 }

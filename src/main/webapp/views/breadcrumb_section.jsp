@@ -5,15 +5,15 @@
 --%>
 
  <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+    <section class="breadcrumb-section set-bg" data-setbg="img/restaurant/${(res!=null?res.image:'breadcrumb.jpg') }">
         <div class="container">
-            <div class="row">
+            <div class="row breadcrumb__banner">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Khám phá</h2>
+                        <h2>${pageInfo }</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.jsp">Trang chủ &nbsp</a>
-                            <span>Khám phá</span>
+                            <span>${pageInfo }</span>
                         </div>
                     </div>
                 </div>

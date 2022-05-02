@@ -34,6 +34,26 @@ public class CategoryBL {
 		return list;
 	}
 	
+	public Category getById(int idCat){
+		Category cat = null;
+		String query = "select * from category where id_category=?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idCat);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				cat = new Category(rs.getInt("id_category"),
+						rs.getString("name"),
+						rs.getString("image"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return cat;
+	}
+	
 	public static void main(String[] args) {
 		CategoryBL bl = new CategoryBL();
 		List<Category> list = bl.getAllCategory();

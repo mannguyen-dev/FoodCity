@@ -83,19 +83,21 @@
       </div>
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
-          <li class="active"><a href="./index.html">Trang chủ</a></li>
-          <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
-          <li>
-            <a href="#">Pages</a>
-            <ul class="header__menu__dropdown">
-              <li><a href="./shop-details.html">Shop Details</a></li>
-              <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-              <li><a href="./checkout.html">Check Out</a></li>
-              <li><a href="./blog-details.html">Blog Details</a></li>
-            </ul>
-          </li>
+          <li class="active"><a href="./index.jsp">Trang chủ</a></li>
+          <li><a href="./restaurant-grid.jsp?category=-1">Khám phá</a></li>
           <li><a href="./blog.html">Blog</a></li>
-          <li><a href="./contact.html">Contact</a></li>
+          <li>
+          <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
+            <a href="#">Nhà hàng</a>
+            <ul class="header__menu__dropdown">
+              <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
+              	<li><a href="./shoping-cart.html">Thêm mới</a></li>
+                <li><a href="./checkout.html">Chỉnh sửa</a></li>
+              <li><a href="./blog-details.jsp?idBlog=1">Blog của tôi</a></li>
+            </ul>
+       	  </c:if>
+          </li>
+          <li><a href="./contact.html">Liên hệ</a></li>
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>
@@ -188,18 +190,21 @@
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
-                <li><a href="./restaurant-grid.jsp">Khám phá</a></li>
+                <li><a href="./restaurant-grid.jsp?category=-1">Khám phá</a></li>
+                <li><a href="./blog.jsp">Blog</a></li>
+                <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
                 <li>
-                  <a href="#">Pages</a>
+                  <a href="#">Nhà hàng</a>
                   <ul class="header__menu__dropdown">
-                    <li><a href="./shop-details.html">Shop Details</a></li>
-                    <li><a href="./shoping-cart.html">Shoping Cart</a></li>
-                    <li><a href="./checkout.html">Check Out</a></li>
-                    <li><a href="./blog-details.html">Blog Details</a></li>
+                    <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
+                    <li><a href="./shoping-cart.html">Thêm mới</a></li>
+                    <li><a href="./checkout.html">Chỉnh sửa</a></li>
+                    <li><a href="./blog_details.jsp?idBlog=1">Blog của tôi</a></li>
                   </ul>
                 </li>
-                <li><a href="./blog.html">Blog</a></li>
-                <li><a href="./contact.html">Contact</a></li>
+                </c:if>
+          		<li><a href="./contact.jsp">Liên hệ</a></li>
+
               </ul>
             </nav>
           </div>

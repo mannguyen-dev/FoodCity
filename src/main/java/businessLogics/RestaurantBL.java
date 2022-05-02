@@ -22,7 +22,7 @@ public class RestaurantBL {
 		restaurant.setName(rs.getString("name"));
 		restaurant.setDescription(rs.getString("description"));
 		restaurant.setIdAddress(rs.getInt("id_address"));
-		restaurant.setStars(rs.getFloat("stars"));
+		restaurant.setStars(rs.getInt("stars"));
 		restaurant.setReviewCount(rs.getInt("review_count"));
 		restaurant.setImage(rs.getString("image"));
 		restaurant.setOpenTime(rs.getString("open_time"));
@@ -39,7 +39,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
@@ -53,11 +52,28 @@ public class RestaurantBL {
 		return list;
 	}
 	
+	public Restaurant getById(int idRes){
+		Restaurant res = null;
+		String query = "select * from restaurant where id_restaurant=?";
+		try {
+			conn = DBContext.getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idRes);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				res = createRestaurant(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return res;
+	}
+	
 	public List<Restaurant> getAllRestaurants(int number){
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant limit ?";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
@@ -76,7 +92,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant where id_category = ? limit ?";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, id_cat);
@@ -96,7 +111,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant order by id_restaurant desc limit ?";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
@@ -116,7 +130,6 @@ public class RestaurantBL {
 		String query = "select *, (stars/review_count) as review from restaurant order by review desc, "
 				+ "review_count desc limit ?";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
@@ -135,7 +148,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant order by review_count desc limit ?";
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
@@ -160,7 +172,6 @@ public class RestaurantBL {
 		if (city != null && !city.equals("")) query += (query.endsWith("where ")?"":"and ") + "city = '"+city+"' ";
 		System.out.println(query);
 		try {
-			new DBContext();
 			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
@@ -176,7 +187,8 @@ public class RestaurantBL {
 	
 	public static void main(String[] args) {
 		RestaurantBL bl = new RestaurantBL();
-		List<Restaurant> list = bl.find(null,"","","Quận 1","TP.HCM");
-		list.forEach(s->System.out.println(s.toString()));
+//		List<Restaurant> list = bl.find(null,"","","Quận 1","TP.HCM");
+//		list.forEach(s->System.out.println(s.toString()));
+		System.out.println(bl.getById(1));
 	}
 }

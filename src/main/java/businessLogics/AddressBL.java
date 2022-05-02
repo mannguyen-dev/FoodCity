@@ -93,11 +93,51 @@ public class AddressBL {
 		return list;
 	}
 	
+	public String getStringAddress(int idAddress){
+		Address add = new Address();
+		String query = "select * from address where id_address = ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idAddress);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				add = createAddress(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		String address = add.getRoad() +(add.getWard().equals("")?"":(", "+add.getWard()))+", " + add.getDistrict()+", " + add.getCity();
+		return address;
+	}
+	
+	public Address getAddress(int idAddress){
+		Address add = new Address();
+		String query = "select * from address where id_address = ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idAddress);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				add = createAddress(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return add;
+	}
+	
 	public static void main(String[] args) {
 		AddressBL addBL = new AddressBL();
 		//List<Address> list = addBL.getAll();
 		//AddressBL.forEach(s->System.out.println(s.toString()));
-		List<String> list = addBL.getAllWard();
-		list.forEach(s->System.out.println(s));
+		//List<String> list = addBL.getAllWard();
+		//list.forEach(s->System.out.println(s));
+		System.out.println(addBL.getStringAddress(1));
 	}
 }

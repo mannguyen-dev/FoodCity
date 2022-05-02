@@ -5,7 +5,7 @@ public class Restaurant {
 	private String name;
 	private String description;
 	private int idAddress;
-	private float stars;
+	private int stars;
 	private int reviewCount;
 	private String image;
 	private String openTime;
@@ -39,10 +39,10 @@ public class Restaurant {
 	public void setIdAddress(int idAddress) {
 		this.idAddress = idAddress;
 	}
-	public float getStars() {
+	public int getStars() {
 		return stars;
 	}
-	public void setStars(float stars) {
+	public void setStars(int stars) {
 		this.stars = stars;
 	}
 	public int getReviewCount() {
@@ -99,7 +99,7 @@ public class Restaurant {
 	public void setIdUser(int idUser) {
 		this.idUser = idUser;
 	}
-	public Restaurant(int idRestaurant, String name, String description, int idAddress, float stars,
+	public Restaurant(int idRestaurant, String name, String description, int idAddress, int stars,
 			int reviewCount, String image, String openTime, String closeTime, String linkToBuy, double minPrice,
 			double maxPrice, int idCategory, int idUser) {
 		super();

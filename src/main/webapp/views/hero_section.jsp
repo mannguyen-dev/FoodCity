@@ -21,14 +21,14 @@
           <div class="col-lg-9">
             <div class="hero__search">
               <div class="hero__search__form">
-                <form action="#">
+                <form action="restaurant-grid.jsp">
                   <div class="hero__search__categories">
                     <i class="fa fa-filter" aria-hidden="true"></i>
-                    <a href="restaurant-grid.jsp">&nbspNÂNG CAO</a>
+                    <a href="restaurant-grid.jsp?category=-1">&nbspNÂNG CAO</a>
                     
                   </div>
-                  <input type="text" placeholder="Địa điểm, món ăn, nhà hàng,..." />
-                  <button type="submit" class="site-btn">Tìm kiếm</button>
+                  <input type="text" placeholder="Địa điểm, món ăn, nhà hàng,..." name="txtSearch"/>
+                  <button type="submit" class="site-btn" >Tìm kiếm</button>
                 </form>
               </div>
               <div class="hero__search__phone">
@@ -46,7 +46,7 @@
                 <span>FOOD CITY</span>
                 <h2>Thành phố ẩm thực</h2>
                 <p>Góc chia sẻ của những người sành ăn!</p>
-                <a href="restaurant-grid.jsp" class="primary-btn">THAM GIA NGAY</a>
+                <a href="restaurant-grid.jsp?category=-1" class="primary-btn">KHÁM PHÁ NGAY</a>
               </div>
             </div>
           </div>

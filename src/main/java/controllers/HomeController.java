@@ -15,9 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import businessLogics.AddressBL;
+import businessLogics.AdvertisementBL;
 import businessLogics.CategoryBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
+import javaBeans.Address;
+import javaBeans.Advertisement;
 import javaBeans.Category;
 import javaBeans.Restaurant;
 import javaBeans.User;
@@ -58,10 +62,19 @@ public class HomeController {
 		//
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();
-		listRestaurant = restaurantBL.getTopRateRestaurants(12);
+		listRestaurant = restaurantBL.getTopRateRestaurants(8);
 		
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
+		
+		//address
+		AddressBL addBL = new AddressBL();
+		List<Address> listAdd = new ArrayList<Address>(); 
+		for (int i = 0; i<listRestaurant.size();i++) {
+			Address address = addBL.getAddress(listRestaurant.get(i).getIdAddress());
+			listAdd.add(address);
+		}
+		request.setAttribute("listAdd", listAdd);
 		
 		return "feature_section";
 	}
@@ -87,6 +100,46 @@ public class HomeController {
 		request.setAttribute("topReviewRes", topReviewRestaurant);
 		
 		return "product_section";
+	}
+	
+	@RequestMapping({"/breadcrumb"})
+	public String breadcrumb(HttpServletRequest request,
+			@RequestParam(name = "pageInfo",required = true) String pageInfo) {
+		// restaurant
+		if (request.getParameter("idRes") != null) {
+			int idRes = Integer.parseInt(request.getParameter("idRes"));
+			RestaurantBL resBL = new RestaurantBL();
+			Restaurant res = resBL.getById(idRes);
+			request.setAttribute("res", res);
+		}
+		//Set attribute
+		request.setAttribute("pageInfo", pageInfo);
+		
+		return "breadcrumb_section";
+	}
+	
+	@RequestMapping({"/search_bar"})
+	public String searchBar(HttpServletRequest request) {
+		
+		//Get category
+		CategoryBL categoryBL = new CategoryBL();
+		List<Category> listCategogy = categoryBL.getAllCategory();
+				
+		request.setAttribute("listCat", listCategogy);
+				
+		return "search_bar";
+	}
+	
+	@RequestMapping({"/banner"})
+	public String banner(HttpServletRequest request) {
+		
+		//Get category
+		AdvertisementBL adBL = new AdvertisementBL();
+		List<Advertisement> listAd = adBL.getAll();
+				
+		request.setAttribute("listAd", listAd);
+				
+		return "banner";
 	}
 	
 
