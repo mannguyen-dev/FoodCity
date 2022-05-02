@@ -90,10 +90,10 @@
           <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
             <a href="#">Nhà hàng</a>
             <ul class="header__menu__dropdown">
-              <li><a href="./restaurant-details.jsp">Thông tin</a></li>
+              <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
               	<li><a href="./shoping-cart.html">Thêm mới</a></li>
                 <li><a href="./checkout.html">Chỉnh sửa</a></li>
-              <li><a href="./blog-details.jsp">Blog của tôi</a></li>
+              <li><a href="./blog-details.jsp?idBlog=1">Blog của tôi</a></li>
             </ul>
        	  </c:if>
           </li>
@@ -196,10 +196,10 @@
                 <li>
                   <a href="#">Nhà hàng</a>
                   <ul class="header__menu__dropdown">
-                    <li><a href="./restaurant-details.jsp">Thông tin</a></li>
+                    <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
                     <li><a href="./shoping-cart.html">Thêm mới</a></li>
                     <li><a href="./checkout.html">Chỉnh sửa</a></li>
-                    <li><a href="./blog_details.jsp">Blog của tôi</a></li>
+                    <li><a href="./blog_details.jsp?idBlog=1">Blog của tôi</a></li>
                   </ul>
                 </li>
                 </c:if>

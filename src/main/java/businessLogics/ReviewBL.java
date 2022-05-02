@@ -65,6 +65,25 @@ public class ReviewBL {
 		return list;
 	}
 	
+	public List<Review> getByIdBlog(int idBlog, int limit){
+		List<Review> list = new ArrayList<>();
+		String query = "select * from review where id_blog=? order by date desc limit ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idBlog);
+			ps.setInt(2, limit);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createReview(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
 	public void postCommentRestaurant(String title, String content, int stars, int idRestaurant, int idUser){
 		List<Review> list = new ArrayList<>();
 		String query = "insert into review (title,content,stars,date,id_restaurant,id_blog,id_user) values (?,?,?,?,?,null,?)";

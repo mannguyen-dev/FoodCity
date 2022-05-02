@@ -2594,14 +2594,14 @@ ol {
 
 .blog__details__hero__text h2 {
   font-size: 46px;
-  color: #ffffff;
+  color: #333;
   font-weight: 700;
   margin-bottom: 10px;
 }
 
 .blog__details__hero__text ul li {
   font-size: 16px;
-  color: #ffffff;
+  color: #333;
   list-style: none;
   display: inline-block;
   margin-right: 45px;
@@ -2639,6 +2639,7 @@ ol {
 .blog-details {
   padding-bottom: 75px;
   border-bottom: 1px solid #e1e1e1;
+  margin-top: 30px;
 }
 
 .blog__details__text {
@@ -3782,4 +3783,25 @@ ol {
 	width: 97%;
 	border-radius: 4px;
 	border-top:1px solid #eee;
+}
+
+.noidung__blog img{
+	height:500px !important;
+	width: 730px !important;
+	margin: 0;
+}
+
+.noidung__blog b{
+	font-size: 24px;
+}
+
+.noidung__blog div{
+	text-align: center;
+	font-style: italic;
+}
+
+
+.chude__blog{
+	margin-bottom: 24px;
+	font-size: 24px;
 }

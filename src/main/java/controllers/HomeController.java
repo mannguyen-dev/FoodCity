@@ -62,7 +62,7 @@ public class HomeController {
 		//
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();
-		listRestaurant = restaurantBL.getTopRateRestaurants(12);
+		listRestaurant = restaurantBL.getTopRateRestaurants(8);
 		
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);

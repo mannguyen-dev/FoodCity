@@ -6,7 +6,7 @@
       <div class="container">
         <div class="row">
 			<div class="Uudai-title">
-              <h2>ƯU ĐÃI CHO BẠN</h2>
+              <h2>ƯU ĐÃI CHO BẠN &nbsp;&nbsp;<i class="fa fa-flag" style="color: #e67e22;" aria-hidden="true"></i></h2>
             </div>
 	        <div class="latest-product__slider owl-carousel">
 	        <c:forEach var="ad" items="${listAd }">

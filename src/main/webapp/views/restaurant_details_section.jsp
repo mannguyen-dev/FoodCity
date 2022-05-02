@@ -130,7 +130,7 @@
 									                <c:if test="${!(empty sessionScope.user ) }">
 										                <form action="post_review?idRes=${res.idRestaurant }">
 										                	<div class="panel-heading">
-									                    		Bình luận của bạn
+									                    		Bình luận của bạn&nbsp;&nbsp;<i class="fa fa-arrow-circle-down" aria-hidden="true"></i>
 									                		</div>
 										                	<div class="danh__gia">
 										                	<label><i class="fa fa-star-o" aria-hidden="true"></i>&nbsp;&nbsp;Đánh giá: </label>
