@@ -1,18 +1,13 @@
 package controllers;
 
 import java.io.UnsupportedEncodingException;
-import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import businessLogics.AddressBL;
@@ -21,13 +16,11 @@ import businessLogics.BlogBL;
 import businessLogics.CategoryBL;
 import businessLogics.EmailSubBL;
 import businessLogics.RestaurantBL;
-import businessLogics.UserBL;
 import javaBeans.Address;
 import javaBeans.Advertisement;
 import javaBeans.Blog;
 import javaBeans.Category;
 import javaBeans.Restaurant;
-import javaBeans.User;
 
 @Controller
 public class HomeController {
@@ -70,25 +63,26 @@ public class HomeController {
 		List<Category> listCategogy = categoryBL.getAllCategory();
 		request.setAttribute("listCat", listCategogy);
 		
-		//
+		//Get list restaurant with category
 		RestaurantBL restaurantBL = new RestaurantBL();
-		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();
+		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();	
 		listRestaurant = restaurantBL.getTopRateRestaurants(8);
 		List<Category> listCatRes = new ArrayList<Category>();
 		for (Restaurant res: listRestaurant) {
 			listCatRes.add(categoryBL.getById(res.getIdCategory()));
 		}
 		
-		request.setAttribute("listRes", listRestaurant);
-		request.setAttribute("listCatRes", listCatRes);
-		
-		//address
+		// get list address
 		AddressBL addBL = new AddressBL();
 		List<Address> listAdd = new ArrayList<Address>(); 
 		for (int i = 0; i<listRestaurant.size();i++) {
 			Address address = addBL.getAddress(listRestaurant.get(i).getIdAddress());
 			listAdd.add(address);
 		}
+		
+		// get attribute
+		request.setAttribute("listRes", listRestaurant);
+		request.setAttribute("listCatRes", listCatRes);
 		request.setAttribute("listAdd", listAdd);
 		
 		return "feature_section";
@@ -98,7 +92,7 @@ public class HomeController {
 	public String product(HttpServletRequest request) {
 		CategoryBL catBL = new CategoryBL();
 		
-		//Get latest Restaurant
+		// Get latest Restaurant
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> latestRestaurant = restaurantBL.getLatestRestaurants(6);
 		
@@ -107,7 +101,7 @@ public class HomeController {
 			latestResCat.add(catBL.getById(res.getIdCategory()));
 		}
 		
-		//Get latest Restaurant
+		// Get latest Restaurant
 		List<Restaurant> topRateRestaurant = restaurantBL.getTopRateRestaurants(6);
 		
 		List<Category> topRateResCat = new ArrayList<Category>();
@@ -115,7 +109,7 @@ public class HomeController {
 			topRateResCat.add(catBL.getById(res.getIdCategory()));
 		}
 		
-		//Get latest Restaurant
+		// Get latest Restaurant
 		List<Restaurant> topReviewRestaurant = restaurantBL.getTopReviewRestaurants(6);
 		
 		List<Category> topReviewResCat = new ArrayList<Category>();
@@ -139,14 +133,14 @@ public class HomeController {
 	@RequestMapping({"/breadcrumb"})
 	public String breadcrumb(HttpServletRequest request,
 			@RequestParam(name = "pageInfo",required = true) String pageInfo) {
-		// restaurant
+		// Get list restaurant
 		if (request.getParameter("idRes") != null) {
 			int idRes = Integer.parseInt(request.getParameter("idRes"));
 			RestaurantBL resBL = new RestaurantBL();
 			Restaurant res = resBL.getById(idRes);
 			request.setAttribute("res", res);
 		}
-		//Set attribute
+		// Set attribute
 		request.setAttribute("pageInfo", pageInfo);
 		
 		return "breadcrumb_section";
@@ -155,7 +149,7 @@ public class HomeController {
 	@RequestMapping({"/search_bar"})
 	public String searchBar(HttpServletRequest request) {
 		
-		//Get category
+		// Get category
 		CategoryBL categoryBL = new CategoryBL();
 		List<Category> listCategogy = categoryBL.getAllCategory();
 				
@@ -167,7 +161,7 @@ public class HomeController {
 	@RequestMapping({"/banner"})
 	public String banner(HttpServletRequest request) {
 		
-		//Get category
+		// Get category
 		AdvertisementBL adBL = new AdvertisementBL();
 		List<Advertisement> listAd = adBL.getAll();
 				
@@ -179,7 +173,7 @@ public class HomeController {
 	@RequestMapping({"/blog_section"})
 	public String blogSection(HttpServletRequest request) {
 		
-		//Get Blog
+		// Get blog
 		BlogBL blogBL = new BlogBL();
 		List<Blog> listBlog = blogBL.getAll(3);
 				

@@ -31,7 +31,7 @@
                   				</div>
                   				<input type="text" name="txtSearch" placeholder="Nhà hàng, địa điểm, món ăn,..." value="${param.txtSearch }" />
                   				<select name="category" id="category" class="form-control Category">
-    										<option value="">--Danh mục--</option>
+    										<option value="">-- Danh mục --</option>
     										<c:forEach var="cat" items="${listCat }">
     										<option value="${cat.idCategory }" ${(param.category == cat.idCategory?'selected=\'selected\'':'') }>${cat.name }</option>
     										</c:forEach>
@@ -42,7 +42,7 @@
                   					</div>
 	                  				<div class="khuvuc_inner">
 		                  				<select name="ward" id="gender" class="form-control">
-    										<option value="">Phường/Xã</option>
+    										<option value="">-- Phường/Xã --</option>
     										<c:forEach var="ward" items="${listWard }">
     										<option value="${ward }" ${(param.ward == ward?'selected=\'selected\'':'') }>${ward }</option>
     										</c:forEach>
@@ -50,7 +50,7 @@
 	                  				</div>
     	              				<div class="khuvuc_inner">
 		                  				<select name="district" id="gender" class="form-control">
-    										<option value="">Quận/Huyện</option>
+    										<option value="">-- Quận/Huyện --</option>
     										<c:forEach var="dist" items="${listDist }">
     										<option value="${dist }" ${(param.district == dist?'selected=\'selected\'':'') }>${dist }</option>
     										</c:forEach>
@@ -58,7 +58,7 @@
 	                  				</div>
         	          				<div class="khuvuc_inner">
 		                  				<select name="city" id="gender" class="form-control">
-    										<option value="">Tỉnh/TP</option>
+    										<option value="">-- Tỉnh/TP --</option>
     										<c:forEach var="city" items="${listCity }">
     										<option value="${city }" ${(param.city == city?'selected=\'selected\'':'') }>${city }</option>
     										</c:forEach>
@@ -75,8 +75,9 @@
                                 <div class="filter__sort">
                                     <span>Sắp xếp theo</span>
                                     <select>
-                                        <option value="0">Default</option>
-                                        <option value="0">Default</option>
+                                        <option value="0">Đúng nhất</option>
+                                        <option value="1">Gần tôi</option>
+                                        <option value="2">Phổ biến</option>
                                     </select>
                                 </div>
                             </div>

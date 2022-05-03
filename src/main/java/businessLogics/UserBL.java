@@ -11,7 +11,8 @@ import java.util.List;
 import javaBeans.User;
 
 public class UserBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -33,7 +34,6 @@ public class UserBL {
 		List<User> list = new ArrayList<>();
 		String query = "select * from user";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -41,7 +41,6 @@ public class UserBL {
 				list.add(u);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -51,7 +50,6 @@ public class UserBL {
 		User user = null;
 		String query = "select * from user where id_user=?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idUser);
 			rs = ps.executeQuery();
@@ -59,7 +57,6 @@ public class UserBL {
 				user = createUser(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return user;
@@ -68,7 +65,6 @@ public class UserBL {
 	public User loginByEmail(String email, String password){
 		String query = "SELECT * FROM `user` WHERE email = ? and password = ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, email);
 			ps.setString(2, password);
@@ -77,7 +73,6 @@ public class UserBL {
 				return createUser(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -86,7 +81,6 @@ public class UserBL {
 	public User loginByPhone(String phone, String password){
 		String query = "SELECT * FROM `user` WHERE phone = ? and password = ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, phone);
 			ps.setString(2, password);
@@ -95,7 +89,6 @@ public class UserBL {
 				return createUser(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
@@ -105,13 +98,11 @@ public class UserBL {
 		String query = "SELECT * FROM `user` WHERE phone = ?";
 		boolean rt = true;
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, phone);
 			rs = ps.executeQuery();
 			rt = rs.next();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rt;
@@ -121,13 +112,11 @@ public class UserBL {
 		String query = "SELECT * FROM `user` WHERE email = ?";
 		boolean rt = true;
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, email);
 			rs = ps.executeQuery();
 			rt = rs.next();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return rt;
@@ -136,7 +125,6 @@ public class UserBL {
 	public void addUser(User user){
 		String query = "insert into user (name, phone, email, avatar, gender, birthday, password, id_role) values (?, ?,?,?,?,?,?,?)";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, user.getName());
 			ps.setString(2, user.getPhone());
@@ -148,7 +136,6 @@ public class UserBL {
 			ps.setInt(8, user.getIdRole());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -156,7 +143,7 @@ public class UserBL {
 	
 	
 	public static void main(String[] args) {
-		UserBL bl = new UserBL();
+//		UserBL bl = new UserBL();
 //		List<User> list = bl.getAll();
 //		list.forEach(s->System.out.println(s.toString()));
 //		User u = bl.loginByEmail("ma","frr");
@@ -176,8 +163,8 @@ public class UserBL {
 //		u.setPhone("22233445");
 //		bl.addUser(u);
 		
-		if (bl.isExistEmail("admin1@gmail.com")) System.out.println("Tai khoan ton tai");;
-		if (bl.isExistPhone("079288766")) System.out.println("Tai khoan ton tai");;
+//		if (bl.isExistEmail("admin1@gmail.com")) System.out.println("Tai khoan ton tai");;
+//		if (bl.isExistPhone("079288766")) System.out.println("Tai khoan ton tai");;
 		
 	}
 }

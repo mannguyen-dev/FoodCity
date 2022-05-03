@@ -14,20 +14,20 @@
 	<mvc:resources location="/img/" mapping="/img/*"/>
 	<mvc:resources location="/js/" mapping="/js/*"/>
 	<mvc:resources location="/fonts/" mapping="/fonts/*"/>
-	<mvc:resources location="/img/featured/" mapping="/img/featured/*"/>
+	<!-- <mvc:resources location="/img/featured/" mapping="/img/featured/*"/>  -->
 	<mvc:resources location="/img/advertisement/" mapping="/img/advertisement/*"/>
-	<mvc:resources location="/img/banner/" mapping="/img/banner/*"/>
+	<!-- <mvc:resources location="/img/banner/" mapping="/img/banner/*"/> -->
 	<mvc:resources location="/img/categories/" mapping="/img/categories/*"/>
 	<mvc:resources location="/img/restaurant/" mapping="/img/restaurant/*"/>
-	<mvc:resources location="/img/latest-product/" mapping="/img/latest-product/*"/>
+	<!-- <mvc:resources location="/img/latest-product/" mapping="/img/latest-product/*"/> -->
 	<mvc:resources location="/img/hero/" mapping="/img/hero/*"/>
 	<mvc:resources location="/img/blog/" mapping="/img/blog/*"/>
 	<mvc:resources location="/img/user/" mapping="/img/user/*"/>
-	<mvc:resources location="/img/product/" mapping="/img/product/*"/>
-	<mvc:resources location="/img/product/discount/" mapping="/img/product/discount/*"/>
-	<mvc:resources location="/img/product/details/" mapping="/img/product/details/*"/>
-	<mvc:resources location="/img/blog/sidebar/" mapping="/img/blog/sidebar/*"/>
-	<mvc:resources location="/img/blog/details/" mapping="/img/blog/details/*"/>
+	<!-- <mvc:resources location="/img/product/" mapping="/img/product/*"/> -->
+	<!-- <mvc:resources location="/img/product/discount/" mapping="/img/product/discount/*"/> -->
+	<!-- <mvc:resources location="/img/product/details/" mapping="/img/product/details/*"/> -->
+	<!-- <mvc:resources location="/img/blog/sidebar/" mapping="/img/blog/sidebar/*"/> -->
+	<!-- <mvc:resources location="/img/blog/details/" mapping="/img/blog/details/*"/> -->
 	<mvc:resources location="/img/album/" mapping="/img/album/*"/>
 	
 	

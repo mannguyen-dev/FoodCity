@@ -153,9 +153,10 @@
 										                		<input required="required" type="text" name="title" class="form-control" placeholder="Tiêu đề..."/>
 										                	</div>
 										                    <textarea required="required" name="content" class="form-control" placeholder="Viết bình luận của bạn..." rows="3"></textarea>
-										                    <br>
-										                    <button type="submit" class="btn btn-info pull-right">Gửi</button>
+										                	<br>
+										                    <button class="site-btn" type="submit" class="btn btn-info pull-right">Gửi</button>
 										                </form>
+									                    <br>
 										              </c:if>
 									                    <div class="clearfix"></div>
 									                    <hr>

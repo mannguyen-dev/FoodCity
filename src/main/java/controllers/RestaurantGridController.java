@@ -29,17 +29,12 @@ public class RestaurantGridController {
 		}
 	}
 	
-	@RequestMapping({"/ShopGrid"})
-	public String shopGrid() {
-		return "redirect:/shop_grid.jsp";
-	}
-	
 	@RequestMapping({"/restaurant_grid"})
 	public String breadcrumb(HttpServletRequest request) {
 		CategoryBL catBL = new CategoryBL();
 		List<Category> listCategogy = catBL.getAllCategory();
 		
-		//
+		// get list restaurant
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant;
 		if (request.getParameter("category") == null)
@@ -49,12 +44,13 @@ public class RestaurantGridController {
 			listRestaurant = restaurantBL.getAllRestaurantsByCategory(id_cat,6);
 		}
 		
-		//address
+		// get address
 		AddressBL addBL = new AddressBL();
 		List<String> listCity = addBL.getAllCity();
 		List<String> listDistrict = addBL.getAllDistrict();
 		List<String> listWard = addBL.getAllWard();
 		
+		// set attribute
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
 		request.setAttribute("listCity", listCity);
@@ -72,11 +68,11 @@ public class RestaurantGridController {
 			@RequestParam(name = "district",required = false) String district,
 			@RequestParam(name = "city",required = false) String city) {
 		
-		
+		// get list category
 		CategoryBL catBL = new CategoryBL();
 		List<Category> listCategogy = catBL.getAllCategory();
 		
-		//
+		// get list restaurant
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant;
 		if (idCat == null) {
@@ -87,25 +83,26 @@ public class RestaurantGridController {
 			listRestaurant = restaurantBL.find(name, idCat, ward, district, city);
 		}
 		
-		//address
+		// get list category of restaurant
+		List<Category> listCatRes = new ArrayList<Category>();
+		for (Restaurant res: listRestaurant) {
+			listCatRes.add(catBL.getById(res.getIdCategory()));
+		}
+		
+		// get address for search form
 		AddressBL addBL = new AddressBL();
 		List<String> listCity = addBL.getAllCity();
 		List<String> listDistrict = addBL.getAllDistrict();
 		List<String> listWard = addBL.getAllWard();
 		
-		//address
+		// get address of list restaurant
 		List<Address> listAdd = new ArrayList<Address>(); 
 		for (int i = 0; i<listRestaurant.size();i++) {
 			Address address = addBL.getAddress(listRestaurant.get(i).getIdAddress());
 			listAdd.add(address);
 		}
 		
-		//get list categogy of restaurant
-		List<Category> listCatRes = new ArrayList<Category>();
-		for (Restaurant res: listRestaurant) {
-			listCatRes.add(catBL.getById(res.getIdCategory()));
-		}
-		
+		// set attribute
 		request.setAttribute("listAdd", listAdd);
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);

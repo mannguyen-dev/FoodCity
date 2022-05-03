@@ -10,7 +10,8 @@ import java.util.List;
 import javaBeans.Advertisement;
 
 public class AdvertisementBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -25,22 +26,20 @@ public class AdvertisementBL {
 		List<Advertisement> list = new ArrayList<>();
 		String query = "select * from advertisement";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createAdvertisement(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
 	
 	public static void main(String[] args) {
-		AdvertisementBL aBL = new AdvertisementBL();
-		List<Advertisement> list = aBL.getAll();
-		list.forEach(s->System.out.println(s));
+//		AdvertisementBL aBL = new AdvertisementBL();
+//		List<Advertisement> list = aBL.getAll();
+//		list.forEach(s->System.out.println(s));
 	}
 }

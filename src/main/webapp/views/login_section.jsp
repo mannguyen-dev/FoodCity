@@ -3,17 +3,17 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
   
-
-  <div class="d-lg-flex half">
+<section class="login_section">
+  <div class="container d-lg-flex half ">
     <div class="bg order-1 order-md-2" style="background-image: url('img/bg_1.jpg');"></div>
     <div class="contents order-2 order-md-1">
 
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-md-8">
+          <div class="col-md-11">
             <h3>Đăng nhập</h3>
             <p class="mb-4">Chào mừng bạn đến với <strong>Food City</strong> - Thế giới ẩm thực dành cho người sành ăn!</p>
-            <p style="color:blue">${mess2}<p>
+            <p style="color:#f03e3e">${mess2}<p>
             <c:if test="${empty sessionScope.user }">
             <form action="login_page.jsp" method="post">
               <div class="form-group first">
@@ -30,7 +30,7 @@
               
               <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Lưu đăng nhập</span>
-                  <input type="checkbox" checked="checked"/>
+                  <input type="checkbox"/>
                   <div class="control__indicator"></div>
                 </label>
                 <span class="ml-auto">
@@ -43,7 +43,7 @@
 
             </form>
             </c:if>
-            <p style="color:blue">${mess1}<p>
+            <p style="color:#228be6">${mess1}<p>
           </div>
         </div>
       </div>
@@ -59,4 +59,4 @@
     <script src="js/popper2.min.js"></script>
 
 
-</html>
+</section>

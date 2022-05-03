@@ -108,9 +108,9 @@
 						                		<input type="text" name="idUser" value="${sessionScope.user.idUser }" hidden/>
 						                    	<textarea required="required" name="content" class="form-control" placeholder="Viết bình luận của bạn..." rows="3"></textarea>
 						                	</div>
-						                    <br>
-						                    <button type="submit" class="btn btn-info pull-right">Gửi</button>
+						                    <button class="site-btn" type="submit" class="btn btn-info pull-right">Gửi</button>
 						                </form>
+   					                    <br>
 						              </c:if>
 					                    <div class="clearfix"></div>
 					                    <hr>

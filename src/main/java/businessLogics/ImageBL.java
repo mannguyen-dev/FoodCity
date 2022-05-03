@@ -10,7 +10,8 @@ import java.util.List;
 import javaBeans.Image;
 
 public class ImageBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -28,7 +29,6 @@ public class ImageBL {
 		List<Image> list = new ArrayList<>();
 		String query = "select * from image";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -45,7 +45,6 @@ public class ImageBL {
 		List<Image> list = new ArrayList<>();
 		String query = "select * from image where id_restaurant =? and id_album=?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idRes);
 			ps.setInt(2, idAlbum);
@@ -61,8 +60,8 @@ public class ImageBL {
 	}
 	
 	public static void main(String[] args) {
-		ImageBL iBL = new ImageBL();
-		List<Image> list = iBL.getByIdResAlbum(3,2);
-		list.forEach(s->System.out.println(s));
+//		ImageBL iBL = new ImageBL();
+//		List<Image> list = iBL.getByIdResAlbum(3,2);
+//		list.forEach(s->System.out.println(s));
 	}
 }

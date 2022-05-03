@@ -8,11 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javaBeans.Address;
-import javaBeans.Category;
-import javaBeans.User;
 
 public class AddressBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -29,14 +28,12 @@ public class AddressBL {
 		List<Address> list = new ArrayList<>();
 		String query = "select * from address";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createAddress(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -46,14 +43,13 @@ public class AddressBL {
 		List<String> list = new ArrayList<>();
 		String query = "select distinct city from address order by city";
 		try {
-			conn = new DBContext().getConnection();
+			//conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getString("city"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -63,14 +59,13 @@ public class AddressBL {
 		List<String> list = new ArrayList<>();
 		String query = "select distinct district from address order by district";
 		try {
-			conn = new DBContext().getConnection();
+			//conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getString("district"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -80,14 +75,13 @@ public class AddressBL {
 		List<String> list = new ArrayList<>();
 		String query = "select distinct ward from address order by ward";
 		try {
-			conn = new DBContext().getConnection();
+			//conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(rs.getString("ward"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -97,7 +91,7 @@ public class AddressBL {
 		Address add = new Address();
 		String query = "select * from address where id_address = ?";
 		try {
-			conn = new DBContext().getConnection();
+			//conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idAddress);
 			rs = ps.executeQuery();
@@ -105,7 +99,6 @@ public class AddressBL {
 				add = createAddress(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -117,7 +110,7 @@ public class AddressBL {
 		Address add = new Address();
 		String query = "select * from address where id_address = ?";
 		try {
-			conn = new DBContext().getConnection();
+			//conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idAddress);
 			rs = ps.executeQuery();
@@ -125,7 +118,6 @@ public class AddressBL {
 				add = createAddress(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -133,11 +125,8 @@ public class AddressBL {
 	}
 	
 	public static void main(String[] args) {
-		AddressBL addBL = new AddressBL();
-		//List<Address> list = addBL.getAll();
-		//AddressBL.forEach(s->System.out.println(s.toString()));
-		//List<String> list = addBL.getAllWard();
-		//list.forEach(s->System.out.println(s));
-		System.out.println(addBL.getStringAddress(1));
+//		AddressBL addBL = new AddressBL();
+//		List<Address> list = addBL.getAll();
+//		list.forEach(s->System.out.println(s));
 	}
 }
