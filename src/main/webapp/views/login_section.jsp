@@ -18,11 +18,11 @@
             <form action="login_page.jsp" method="post">
               <div class="form-group first">
                 <label for="username">Email/Số điện thoại</label>
-                <input type="text" class="form-control" placeholder="email_cua_ban@gmail.com" name="email" id="username">
+                <input type="text" class="form-control" placeholder="email_cua_ban@email.com" name="email" id="username" required="required" value="${param.email }">
               </div>
               <div class="form-group last mb-3">
                 <label for="password">Mật khẩu</label>
-                <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password" id="password">
+                <input type="password" class="form-control" placeholder="Nhập mật khẩu" name="password" id="password" required="required" value="${param.password }">
               </div>
               
               <p style="color:red">${mess}<p>

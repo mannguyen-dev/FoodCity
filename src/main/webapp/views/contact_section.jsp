@@ -69,13 +69,13 @@
             <form action="#">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Tên của bạn">
+                        <input type="text" placeholder="Tên của bạn" required="required">
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <input type="text" placeholder="Email của bạn">
+                        <input type="text" placeholder="Email của bạn" required="required">
                     </div>
                     <div class="col-lg-12 text-center">
-                        <textarea placeholder="Lời nhắn..."></textarea>
+                        <textarea placeholder="Lời nhắn..." required="required"></textarea>
                         <button type="submit" class="site-btn">GỬI PHẢN HỒI</button>
                     </div>
                 </div>

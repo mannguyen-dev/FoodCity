@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javaBeans.Address;
+import javaBeans.Blog;
 import javaBeans.Restaurant;
 import javaBeans.Review;
 
@@ -85,7 +86,6 @@ public class ReviewBL {
 	}
 	
 	public void postCommentRestaurant(String title, String content, int stars, int idRestaurant, int idUser){
-		List<Review> list = new ArrayList<>();
 		String query = "insert into review (title,content,stars,date,id_restaurant,id_blog,id_user) values (?,?,?,?,?,null,?)";
 		try {
 			conn = new DBContext().getConnection();
@@ -101,12 +101,10 @@ public class ReviewBL {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Debug");
 		updateReviewRestaurant(stars, idRestaurant);
 	}
 	
 	public void updateReviewRestaurant(int stars, int idRestaurant){
-		List<Review> list = new ArrayList<>();
 		RestaurantBL resBL = new RestaurantBL();
 		Restaurant res = resBL.getById(idRestaurant);
 		String query = "update restaurant set stars = ?, review_count = ? where id_restaurant = ?";
@@ -123,10 +121,62 @@ public class ReviewBL {
 		}
 	}
 	
+	public void updateBlogLikes(int idBlog){
+		BlogBL blogBL = new BlogBL();
+		Blog blog = blogBL.getById(idBlog);
+		String query = "update blog set like_count = ? where id_blog = ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, blog.getLikeCount()+1);
+			ps.setInt(2, blog.getIdBlog());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateBlogComments(int idBlog){
+		BlogBL blogBL = new BlogBL();
+		Blog blog = blogBL.getById(idBlog);
+		String query = "update blog set cmt_count = ? where id_blog = ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, blog.getCmtCount()+1);
+			ps.setInt(2, blog.getIdBlog());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void postCommentBlog(String content, boolean like, int idBlog, int idUser){
+		String query = "insert into review (title,content,date,id_blog,id_user) values (?,?,?,?,?)";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setString(1, (like?"like":"dislike"));
+			ps.setString(2, content);
+			ps.setDate(3, new Date(System.currentTimeMillis()));
+			ps.setInt(4, idBlog);
+			ps.setInt(5, idUser);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		updateBlogComments(idBlog);
+		if (like) updateBlogLikes(idBlog);
+	}
+	
 	public static void main(String[] args) {
 		ReviewBL rBL = new ReviewBL();
-		List<Review> list = rBL.getByIdRestaurant(1,2);
-		list.forEach(s->System.out.println(s));
+//		List<Blog> list = 
+				rBL.postCommentBlog("Nội dung chưa chi tiết lắm", false, 1,1);
+//		list.forEach(s->System.out.println(s));
 //		rBL.postCommentRestaurant("Món ăn", "Hợp khẩu vị của mình...", 8, 2, 2);
 		//rBL.updateReviewRestaurant(9, 1);
 	}

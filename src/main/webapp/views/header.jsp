@@ -186,7 +186,7 @@
               <a href="./index.jsp"><img src="img/logo.svg" alt="logo.png" /></a>
             </div>
           </div>
-          <div class="col-lg-6">
+          <div class="col-lg-5">
             <nav class="header__menu">
               <ul>
                 <li class="active"><a href="./index.jsp">Trang chủ</a></li>
@@ -208,7 +208,7 @@
               </ul>
             </nav>
           </div>
-          <div class="col-lg-3">
+          <div class="col-lg-4">
           <c:if test="${not empty sessionScope.user}">
             <div class="header__cart">
               <ul>

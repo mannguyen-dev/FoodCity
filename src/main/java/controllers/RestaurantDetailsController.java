@@ -99,9 +99,17 @@ public class RestaurantDetailsController {
 			listAdd.add(address);
 		}
 		
+		//related restaurant category
+		CategoryBL catBL = new CategoryBL();
+		List<Category> listCatRes = new ArrayList<Category>();
+		for (Restaurant res: listRes) {
+			listCatRes.add(catBL.getById(res.getIdCategory()));
+		}
+		
 		// set att
 		request.setAttribute("listAdd", listAdd);
 		request.setAttribute("listRes", listRes);
+		request.setAttribute("listCatRes", listCatRes);
 		
 		return "related_restaurant_section";
 	}

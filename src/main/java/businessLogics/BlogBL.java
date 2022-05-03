@@ -23,13 +23,86 @@ public class BlogBL {
 				rs.getString("cover_img"),
 				rs.getInt("id_user"),
 				rs.getDate("date"),
-				rs.getInt("id_category"));
+				rs.getInt("id_category"),
+				rs.getInt("cmt_count"),
+				rs.getInt("like_count"));
 		return blog;
 	}
 	
 	public List<Blog> getAll(){
 		List<Blog> list = new ArrayList<>();
-		String query = "select * from blog";
+		String query = "SELECT * FROM food_city.blog order by id_blog desc";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createAddress(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Blog> getAll(int limit){
+		List<Blog> list = new ArrayList<>();
+		String query = "select * from blog order by id_blog desc limit ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, limit);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createAddress(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Blog> getByCategory(int idCat, int limit){
+		List<Blog> list = new ArrayList<>();
+		String query = "select * from blog where id_category=? limit ?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idCat);
+			ps.setInt(2, limit);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createAddress(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Blog> getByCategory(int idCat){
+		List<Blog> list = new ArrayList<>();
+		String query = "select * from blog where id_category=?";
+		try {
+			conn = new DBContext().getConnection();
+			ps = conn.prepareStatement(query);
+			ps.setInt(1, idCat);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				list.add(createAddress(rs));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public List<Blog> findByTitle(String title){
+		List<Blog> list = new ArrayList<>();
+		String query = "select * from blog where title like '%"+title+"%'";
 		try {
 			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
@@ -44,9 +117,9 @@ public class BlogBL {
 		return list;
 	}
 	
-	public List<Blog> getAll(int limit){
+	public List<Blog> getOutstanding(int limit){
 		List<Blog> list = new ArrayList<>();
-		String query = "select * from blog limit ?";
+		String query = "SELECT * FROM food_city.blog order by cmt_count desc limit ?";
 		try {
 			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
@@ -110,6 +183,7 @@ public class BlogBL {
 				Category cat = catBL.getById(rs.getInt("id_category"));
 				list.add(cat.getName());
 				list.add(rs.getString("so_luong"));
+				list.add(String.valueOf(cat.getIdCategory()));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -120,7 +194,7 @@ public class BlogBL {
 	
 	public static void main(String[] args) {
 		BlogBL blogBL = new BlogBL();
-		List<String> list = blogBL.getStringBlogCategory();
+		List<Blog> list = blogBL.findByTitle("top 4");
 		list.forEach(s->System.out.println(s));
 //		Blog blog = blogBL.getById(1);
 //		System.out.println(blog);

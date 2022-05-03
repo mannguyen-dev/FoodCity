@@ -100,12 +100,19 @@ public class RestaurantGridController {
 			listAdd.add(address);
 		}
 		
+		//get list categogy of restaurant
+		List<Category> listCatRes = new ArrayList<Category>();
+		for (Restaurant res: listRestaurant) {
+			listCatRes.add(catBL.getById(res.getIdCategory()));
+		}
+		
 		request.setAttribute("listAdd", listAdd);
 		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
 		request.setAttribute("listCity", listCity);
 		request.setAttribute("listDist", listDistrict);
 		request.setAttribute("listWard", listWard);
+		request.setAttribute("listCatRes", listCatRes);
 		
 		return "restaurant_grid_section";
 	}

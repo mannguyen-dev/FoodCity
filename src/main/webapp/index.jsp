@@ -7,5 +7,5 @@
 <jsp:include page="feature" />
 <jsp:include page="banner" />
 <jsp:include page="product" />
-<jsp:include page="views/blog_section.jsp" />
+<jsp:include page="blog_section" />
 <jsp:include page="views/footer.jsp" />
