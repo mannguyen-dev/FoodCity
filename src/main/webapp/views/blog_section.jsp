@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="section-title from-blog__title">
-              <h2>BLOG MỚI NHẤT</h2>
+              <h2><a href="blog.jsp" style="color:#000;">BLOG MỚI NHẤT</a></h2>
             </div>
           </div>
         </div>
@@ -20,6 +20,7 @@
               <div class="blog__item__text">
                 <ul>
                   <li><i class="fa fa-calendar-o"></i> ${blog.date}</li>
+                  <li><i class="fa fa-heart-o"></i> ${blog.likeCount}</li>
                   <li><i class="fa fa-comment-o"></i> ${blog.cmtCount}</li>
                 </ul>
                 <h5><a href="blog_details.jsp?idBlog=${blog.idBlog }">${blog.title}</a></h5>

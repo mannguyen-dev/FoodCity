@@ -19,6 +19,7 @@ import businessLogics.AddressBL;
 import businessLogics.AdvertisementBL;
 import businessLogics.BlogBL;
 import businessLogics.CategoryBL;
+import businessLogics.EmailSubBL;
 import businessLogics.RestaurantBL;
 import businessLogics.UserBL;
 import javaBeans.Address;
@@ -44,6 +45,13 @@ public class HomeController {
 		return "redirect:/index.jsp";
 	}
 	
+	@RequestMapping({"email_sub"})
+	public String emailSub(HttpServletRequest request, @RequestParam(name = "email",required = true) String email) {
+		EmailSubBL eBL = new EmailSubBL();
+		eBL.insertEmail(email);
+		return "redirect:/index.jsp";
+	}
+	
 	@RequestMapping({"/hero"})
 	public String hero(HttpServletRequest request) {
 		//Get category
@@ -60,14 +68,19 @@ public class HomeController {
 		//Get category
 		CategoryBL categoryBL = new CategoryBL();
 		List<Category> listCategogy = categoryBL.getAllCategory();
+		request.setAttribute("listCat", listCategogy);
 		
 		//
 		RestaurantBL restaurantBL = new RestaurantBL();
 		List<Restaurant> listRestaurant = new ArrayList<Restaurant>();
 		listRestaurant = restaurantBL.getTopRateRestaurants(8);
+		List<Category> listCatRes = new ArrayList<Category>();
+		for (Restaurant res: listRestaurant) {
+			listCatRes.add(categoryBL.getById(res.getIdCategory()));
+		}
 		
-		request.setAttribute("listCat", listCategogy);
 		request.setAttribute("listRes", listRestaurant);
+		request.setAttribute("listCatRes", listCatRes);
 		
 		//address
 		AddressBL addBL = new AddressBL();
@@ -83,23 +96,42 @@ public class HomeController {
 	
 	@RequestMapping({"/product"})
 	public String product(HttpServletRequest request) {
+		CategoryBL catBL = new CategoryBL();
+		
 		//Get latest Restaurant
 		RestaurantBL restaurantBL = new RestaurantBL();
-		List<Restaurant> latestRestaurant;
-		latestRestaurant = restaurantBL.getLatestRestaurants(6);
+		List<Restaurant> latestRestaurant = restaurantBL.getLatestRestaurants(6);
+		
+		List<Category> latestResCat = new ArrayList<Category>();
+		for (Restaurant res: latestRestaurant) {
+			latestResCat.add(catBL.getById(res.getIdCategory()));
+		}
 		
 		//Get latest Restaurant
-		List<Restaurant> topRateRestaurant;
-		topRateRestaurant = restaurantBL.getTopRateRestaurants(6);
+		List<Restaurant> topRateRestaurant = restaurantBL.getTopRateRestaurants(6);
+		
+		List<Category> topRateResCat = new ArrayList<Category>();
+		for (Restaurant res: topRateRestaurant) {
+			topRateResCat.add(catBL.getById(res.getIdCategory()));
+		}
 		
 		//Get latest Restaurant
-		List<Restaurant> topReviewRestaurant;
-		topReviewRestaurant = restaurantBL.getTopReviewRestaurants(6);
+		List<Restaurant> topReviewRestaurant = restaurantBL.getTopReviewRestaurants(6);
+		
+		List<Category> topReviewResCat = new ArrayList<Category>();
+		for (Restaurant res: topReviewRestaurant) {
+			topReviewResCat.add(catBL.getById(res.getIdCategory()));
+		}
+		
 		
 		//Set attribute
 		request.setAttribute("latestRes", latestRestaurant);
 		request.setAttribute("topRateRes", topRateRestaurant);
 		request.setAttribute("topReviewRes", topReviewRestaurant);
+		
+		request.setAttribute("latestResCat", latestResCat);
+		request.setAttribute("topRateResCat", topRateResCat);
+		request.setAttribute("topReviewResCat", topReviewResCat);
 		
 		return "product_section";
 	}

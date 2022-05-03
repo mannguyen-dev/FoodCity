@@ -32,7 +32,7 @@
 	                            (${res.reviewCount } đánh giá)
 	                        </div>
 	                        <div class="thongtin__cat"><i class="fa fa-bookmark" aria-hidden="true"></i>${cat.name }</div>
-	                        <div class="thongtin__diachi"><i class="fa fa-map-marker" aria-hidden="true"></i>${address }</div>
+	                        <div class=""><i class="fa fa-map-marker" aria-hidden="true"></i>${address }</div>
 	                        <fmt:setLocale value="vi-VN"/>
 	                        <fmt:formatNumber type="number" var="minPrice" value="${res.minPrice}" maxFractionDigits="0" groupingUsed = "true"/>
 	                        <fmt:formatNumber type="number" var="maxPrice" value="${res.maxPrice}" maxFractionDigits="0" groupingUsed = "true"/>

@@ -47,8 +47,8 @@
               <p>
                 Để có cơ hội nhận các ưu đãi đặc biệt sớm nhất.
               </p>
-              <form action="#">
-                <input type="text" placeholder="Nhập email của bạn" />
+              <form action="email_sub">
+                <input type="email" name="email" required="required" placeholder="Nhập email của bạn" />
                 <button type="submit" class="site-btn">Đăng ký</button>
               </form>
               <div class="footer__widget__social">
@@ -73,11 +73,5 @@
     <script src="js/mixitup.min.js"></script>
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/main.js"></script>
-    <!-- 
-    <script src="js/jquery2-3.3.1.min.js"></script>
-    <script src="js/bootstrap2.min.js"></script>
-    <script src="js/main2.js"></script>
-    <script src="js/owl2.carousel.min.js"></script>
-    <script src="js/popper2.min.js"></script>  -->
   </body>
 </html>

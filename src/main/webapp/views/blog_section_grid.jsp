@@ -61,6 +61,7 @@
                                 <div class="blog__item__text">
                                     <ul>
                                         <li><i class="fa fa-calendar-o"></i> ${blog.date }</li>
+                                        <li><i class="fa fa-heart-o"></i> ${blog.likeCount}</li>
                                         <li><i class="fa fa-comment-o"></i> ${blog.cmtCount }</li>
                                     </ul>
                                     <h5><a href="blog_details.jsp?idBlog=${blog.idBlog }">${blog.title }</a></h5>

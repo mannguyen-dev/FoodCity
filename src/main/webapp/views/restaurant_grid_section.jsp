@@ -29,11 +29,11 @@
                   				<div class="hero__search__categories">
                     				<a>Thông tin</a>
                   				</div>
-                  				<input type="text" name="txtSearch" placeholder="Nhà hàng, địa điểm, món ăn,..." />
+                  				<input type="text" name="txtSearch" placeholder="Nhà hàng, địa điểm, món ăn,..." value="${param.txtSearch }" />
                   				<select name="category" id="category" class="form-control Category">
     										<option value="">--Danh mục--</option>
     										<c:forEach var="cat" items="${listCat }">
-    										<option value="${cat.idCategory }">${cat.name }</option>
+    										<option value="${cat.idCategory }" ${(param.category == cat.idCategory?'selected=\'selected\'':'') }>${cat.name }</option>
     										</c:forEach>
   								</select>
                   				<div class="khuvuc">
@@ -44,7 +44,7 @@
 		                  				<select name="ward" id="gender" class="form-control">
     										<option value="">Phường/Xã</option>
     										<c:forEach var="ward" items="${listWard }">
-    										<option value="${ward }">${ward }</option>
+    										<option value="${ward }" ${(param.ward == ward?'selected=\'selected\'':'') }>${ward }</option>
     										</c:forEach>
   										</select>
 	                  				</div>
@@ -52,7 +52,7 @@
 		                  				<select name="district" id="gender" class="form-control">
     										<option value="">Quận/Huyện</option>
     										<c:forEach var="dist" items="${listDist }">
-    										<option value="${dist }">${dist }</option>
+    										<option value="${dist }" ${(param.district == dist?'selected=\'selected\'':'') }>${dist }</option>
     										</c:forEach>
   										</select>
 	                  				</div>
@@ -60,7 +60,7 @@
 		                  				<select name="city" id="gender" class="form-control">
     										<option value="">Tỉnh/TP</option>
     										<c:forEach var="city" items="${listCity }">
-    										<option value="${city }">${city }</option>
+    										<option value="${city }" ${(param.city == city?'selected=\'selected\'':'') }>${city }</option>
     										</c:forEach>
   										</select>
 	                  				</div>
@@ -110,13 +110,18 @@
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-		                            <h6 class="sanpham_title">
-		                            <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
-		                            	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
-		                            	<a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name}</a>
-		                            </h6>
-				                    <div class="thongtin__diachi" style="color: #868e96;"><i class="fa fa-map-marker" aria-hidden="true">&nbsp;&nbsp;</i>${listAdd[i].district }, ${listAdd[i].city }</div>
-		                        </div>
+					                 <h6 class="sanpham_title">
+							                 <a href="restaurant-details.jsp?idRes=${res.idRestaurant}">${res.name.length()>26?res.name.substring(0,26):res.name }${res.name.length()>26?'...':''}</a>
+					                 </h6>
+						             <fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
+						             <div class="sanpham_thongtin">
+						             	<span class="hero__search__phone__icon">${(res.reviewCount!=0?stars:'...')}</span>
+						             	<div class="thongtin__diachi">
+						            	 	<div><i class="fa fa-bookmark" aria-hidden="true"></i>${listCatRes[i].name }</div>
+					    	        	 	<div><i class="fa fa-map-marker" aria-hidden="true"></i>${listAdd[i].district }, ${listAdd[i].city }</div>
+						             	</div>
+						             </div>
+					           </div>
                             </div>
                         </div>
                         <c:if test="${itemNum == 9 }">

@@ -17,13 +17,14 @@
                       <img src="img/restaurant/${res.image }" alt="${res.name }" />
                     </div>
                     <div class="latest-product__item__text">
+                      <h6>${res.name.length()>26?res.name.substring(0,26):res.name }${res.name.length()>26?'...':''}</h6>
                       <div class="noibat__nhahang">
                       	<fmt:formatNumber var="stars" value="${res.stars/res.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
                         <i class="fa fa-star"></i>
                        ${(res.reviewCount!=0?stars :'...')}
                         (${res.reviewCount } đánh giá)
                       </div>
-                      <h6>${res.name }</h6>
+                      <div class="thongtin__danhmuc"><i class="fa fa-bookmark" aria-hidden="true"></i>${latestResCat[i-1].name }</div>
                     </div>
                   </a>
                   <c:if test="${i==3 }">
@@ -48,13 +49,14 @@
                       <img src="img/restaurant/${res2.image }" alt="${res2.name }" />
                     </div>
                     <div class="latest-product__item__text">
+                      <h6>${res2.name.length()>26?res2.name.substring(0,26):res2.name }${res2.name.length()>26?'...':''}</h6>
                       <div class="noibat__nhahang">
                       	<fmt:formatNumber var="stars" value="${res2.stars/res2.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
                         <i class="fa fa-star"></i>
                          ${(res2.reviewCount!=0?stars :'...')}
                         (${res2.reviewCount } đánh giá)
                       </div>
-                      <h6>${res2.name }</h6>
+                      <div class="thongtin__danhmuc"><i class="fa fa-bookmark" aria-hidden="true"></i>${topRateResCat[i-1].name }</div>
                     </div>
                   </a>
                   <c:if test="${i==3 }">
@@ -79,13 +81,14 @@
                       <img src="img/restaurant/${res3.image }" alt="${res3.name }" />
                     </div>
                     <div class="latest-product__item__text">
+                      <h6>${res3.name.length()>26?res3.name.substring(0,26):res3.name }${res3.name.length()>26?'...':''}</h6>
                       <div class="noibat__nhahang">
                       	<fmt:formatNumber var="stars" value="${res3.stars/res3.reviewCount}" maxFractionDigits="1" minFractionDigits="1"/>
                         <i class="fa fa-star"></i>
                        	${(res3.reviewCount!=0?stars :'...')}
                         (${res3.reviewCount } đánh giá)
                       </div>
-                      <h6>${res3.name }</h6>
+                      <div class="thongtin__danhmuc"><i class="fa fa-bookmark" aria-hidden="true"></i>${topReviewResCat[i-1].name }</div>
                     </div>
                   </a>
                   <c:if test="${i==3 }">

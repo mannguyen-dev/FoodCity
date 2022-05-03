@@ -12,6 +12,13 @@ public class Blog {
 	private Date date;
 	private int idCategory;
 	private int cmtCount;
+	private int likeCount;
+	public int getLikeCount() {
+		return likeCount;
+	}
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
+	}
 	public int getCmtCount() {
 		return cmtCount;
 	}
@@ -73,10 +80,10 @@ public class Blog {
 	public String toString() {
 		return "Blog [idBlog=" + idBlog + ", title=" + title + ", subTitle=" + subTitle + ", content=" + content
 				+ ", coverImg=" + coverImg + ", idUser=" + idUser + ", date=" + date + ", idCategory=" + idCategory
-				+ ", cmtCount=" + cmtCount + "]";
+				+ ", cmtCount=" + cmtCount + ", likeCount=" + likeCount + "]";
 	}
 	public Blog(int idBlog, String title, String subTitle, String content, String coverImg, int idUser, Date date,
-			int idCategory, int cmtCount) {
+			int idCategory, int cmtCount, int likeCount) {
 		super();
 		this.idBlog = idBlog;
 		this.title = title;
@@ -87,5 +94,6 @@ public class Blog {
 		this.date = date;
 		this.idCategory = idCategory;
 		this.cmtCount = cmtCount;
+		this.likeCount = likeCount;
 	}
 }

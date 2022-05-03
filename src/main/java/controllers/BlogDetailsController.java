@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -48,19 +49,34 @@ public class BlogDetailsController {
 		//get list comment
 		ReviewBL rBL = new ReviewBL();
 		List<Review> listReview = rBL.getByIdBlog(idBlog, 8);
+		//getReview
+		UserBL uBL = new UserBL();
+		List<User> listUserReview = new ArrayList<User>();
+		for(Review review: listReview) {
+			listUserReview.add(uBL.getById(review.getIdUser()));
+		}
 		
 		//get list cat and this cat
 		List<String> listCatAndAmt = blogBL.getStringBlogCategory();
 		CategoryBL catBL = new CategoryBL();
 		Category cat = catBL.getById(blog.getIdCategory());
 		
+		//get blog outstanding
+		List<Blog> listOutStanding = blogBL.getOutstanding(5);
+		
+		//get blog new
+		List<Blog> blogNews = blogBL.getAll(3);
+		
 		//set attribute
 		request.setAttribute("blog", blog);
 		request.setAttribute("poster", poster);
 		request.setAttribute("listReview", listReview);
+		request.setAttribute("listUserReview", listUserReview);
 		request.setAttribute("listCatAndAmt", listCatAndAmt);
 		request.setAttribute("posterRole", role);
 		request.setAttribute("thisCat", cat);
+		request.setAttribute("listOutStanding", listOutStanding);
+		request.setAttribute("blogNews", blogNews);
 		
 		return "blog_details_section";
 	}
@@ -108,6 +124,19 @@ public class BlogDetailsController {
 		request.setAttribute("listCatAndAmt", listCatAndAmt);
 		
 		return "blog_section_grid";
+	}
+	
+	@RequestMapping({"/post_blog_comment"})
+	public String postReview(HttpServletRequest request,
+			@RequestParam(name = "idBlog",required = true) int idBlog,
+			@RequestParam(name = "idUser",required = true) int idUser,
+			@RequestParam(name = "like",required = false) boolean like,
+			@RequestParam(name = "content",required = true) String content) {
+
+		ReviewBL reBL = new ReviewBL();
+		reBL.postCommentBlog(content, like, idBlog, idUser);
+		
+		return "redirect:/blog_details.jsp?idBlog="+idBlog;
 	}
 	
 }

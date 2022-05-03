@@ -165,11 +165,11 @@ public class RestaurantBL {
 	public List<Restaurant> find(String name, String idCat, String ward, String district, String city){
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant inner join address on restaurant.id_address = address.id_address where ";
-		if ( name != null && !name.equals("")) query += (query.endsWith("where ")?"":"and ") + "name like '%"+name+"%' ";
-		if (idCat != null && !idCat.equals("")) query += (query.endsWith("where ")?"":"and ") + "id_category = "+idCat;
-		if (ward != null && !ward.equals("")) query += (query.endsWith("where ")?"":"and ") + "ward = '"+ward+"' ";
-		if (district != null && !district.equals("")) query += (query.endsWith("where ")?"":"and ") + "district = '"+district+"' ";
-		if (city != null && !city.equals("")) query += (query.endsWith("where ")?"":"and ") + "city = '"+city+"' ";
+		if ( name != null && !name.equals("")) query += (query.endsWith("where ")?"":" and ") + "name like '%"+name+"%' ";
+		if (idCat != null && !idCat.equals("")) query += (query.endsWith("where ")?"":" and ") + "id_category = "+idCat;
+		if (ward != null && !ward.equals("")) query += (query.endsWith("where ")?"":" and ") + "ward = '"+ward+"' ";
+		if (district != null && !district.equals("")) query += (query.endsWith("where ")?"":" and ") + "district = '"+district+"' ";
+		if (city != null && !city.equals("")) query += (query.endsWith("where ")?"":" and ") + "city = '"+city+"' ";
 		System.out.println(query);
 		try {
 			conn = DBContext.getConnection();

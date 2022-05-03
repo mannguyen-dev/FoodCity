@@ -20,7 +20,7 @@
                 <div class="col-md-12">
                   <div class="form-group first">
                     <label for="fname">Tên đăng nhập <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" placeholder="Vd: Nguyễn Văn A" id="fname" name="fname">
+                    <input type="text" class="form-control" placeholder="Vd: Nguyễn Văn A" id="fname" name="fname" required="required" value="${param.fname }">
                   </div>    
                 </div>
               </div>
@@ -28,13 +28,13 @@
                 <div class="col-md-6">
                   <div class="form-group first">
                     <label for="birthday">Ngày sinh</label>
-                    <input type="text" class="form-control" placeholder="Vd: 01/01/2000" id="birthday" name="birthday">
+                    <input type="text" class="form-control" placeholder="Vd: 01/01/2000" id="birthday" name="birthday" value="${param.birthday }">
                   </div>    
                 </div>
                 <div class="col-md-6">
                   <div class="form-group first">
                     <label for="avatar">Ảnh đại diện</label>
-  					<input type="file" id="avatar" name="file" alt="Ảnh đại diện" class="upload-btn form-control">
+  					<input type="file" id="avatar" name="file" alt="Ảnh đại diện" class="upload-btn form-control" value="${param.file }">
                   </div>    
                 </div>
               </div>
@@ -42,7 +42,7 @@
                 <div class="col-md-12">
                   <div class="form-group first">
                     <label for="email">Email <span style="color: red">*</span></label>
-                    <input type="email" class="form-control" placeholder="Vd: nguyenvana@gmail.com" id="email" name="email">
+                    <input type="email" class="form-control" placeholder="Vd: nguyenvana@gmail.com" id="email" name="email" required="required" value="${param.email }">
                   </div>    
                 </div>
               </div>
@@ -50,7 +50,7 @@
                 <div class="col-md-12">
                   <div class="form-group first">
                     <label for="phone">Số điện thoại <span style="color: red">*</span></label>
-                    <input type="text" class="form-control" placeholder="Vd: 0900 000 000" id="phone" name="phone">
+                    <input type="text" class="form-control" placeholder="Vd: 0900 000 000" id="phone" name="phone" required="required" value="${param.phone }">
                   </div>    
                 </div>
               </div>
@@ -59,8 +59,8 @@
                   <div class="form-group first">
                     <label for="phone">Bạn là một <span style="color: red">*</span></label>
                     <select name="role" id="role" class="form-control">
-    					<option value="customer">Thực khách</option>
-    					<option value="manager">Quản lý</option>
+    					<option value="customer" ${(param.role == "customer"?'selected=\'selected\'':'') }>Thực khách</option>
+    					<option value="manager" ${(param.role == "manager"?'selected=\'selected\'':'') }>Quản lý nhà hàng</option>
   					</select>
                   </div>    
                 </div>
@@ -68,8 +68,8 @@
                   <div class="form-group first">
                     <label for="gender">Giới tính</label>
                     <select name="gender" id="gender" class="form-control">
-    					<option value="nam">Nam</option>
-    					<option value="nu">Nữ</option>
+    					<option value="nam" ${(param.gender == "nam"?'selected=\'selected\'':'') }>Nam</option>
+    					<option value="nu" ${(param.gender == "nu"?'selected=\'selected\'':'') }>Nữ</option>
   					</select>
                   </div>    
                 </div>
@@ -79,14 +79,14 @@
               
                   <div class="form-group last mb-3">
                     <label for="password">Mật khẩu <span style="color: red">*</span></label>
-                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="password" name="password">
+                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="password" name="password" required="required">
                   </div>
                 </div>
                 <div class="col-md-6">
               
                   <div class="form-group last mb-3">
                     <label for="re-password">Nhập lại mật khẩu <span style="color: red">*</span></label>
-                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="re-password" name="re-password">
+                    <input type="password" class="form-control" placeholder="Mật khẩu của bạn" id="re-password" name="re-password" required="required">
                   </div>
                 </div>
               </div>

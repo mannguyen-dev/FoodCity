@@ -24,7 +24,8 @@ public class BlogBL {
 				rs.getInt("id_user"),
 				rs.getDate("date"),
 				rs.getInt("id_category"),
-				rs.getInt("cmt_count"));
+				rs.getInt("cmt_count"),
+				rs.getInt("like_count"));
 		return blog;
 	}
 	
