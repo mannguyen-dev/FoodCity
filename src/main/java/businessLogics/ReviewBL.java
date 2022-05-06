@@ -8,13 +8,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javaBeans.Address;
 import javaBeans.Blog;
 import javaBeans.Restaurant;
 import javaBeans.Review;
 
 public class ReviewBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -34,14 +34,12 @@ public class ReviewBL {
 		List<Review> list = new ArrayList<>();
 		String query = "select * from review";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createReview(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -51,7 +49,6 @@ public class ReviewBL {
 		List<Review> list = new ArrayList<>();
 		String query = "select * from review where id_restaurant=? order by date desc limit ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idRes);
 			ps.setInt(2, limit);
@@ -60,7 +57,6 @@ public class ReviewBL {
 				list.add(createReview(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -70,7 +66,6 @@ public class ReviewBL {
 		List<Review> list = new ArrayList<>();
 		String query = "select * from review where id_blog=? order by date desc limit ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idBlog);
 			ps.setInt(2, limit);
@@ -79,7 +74,6 @@ public class ReviewBL {
 				list.add(createReview(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -88,7 +82,6 @@ public class ReviewBL {
 	public void postCommentRestaurant(String title, String content, int stars, int idRestaurant, int idUser){
 		String query = "insert into review (title,content,stars,date,id_restaurant,id_blog,id_user) values (?,?,?,?,?,null,?)";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, title);
 			ps.setString(2, content);
@@ -98,7 +91,6 @@ public class ReviewBL {
 			ps.setInt(6, idUser);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		updateReviewRestaurant(stars, idRestaurant);
@@ -109,14 +101,12 @@ public class ReviewBL {
 		Restaurant res = resBL.getById(idRestaurant);
 		String query = "update restaurant set stars = ?, review_count = ? where id_restaurant = ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, res.getStars()+stars);
 			ps.setInt(2, res.getReviewCount()+1);
 			ps.setInt(3, idRestaurant);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -126,13 +116,11 @@ public class ReviewBL {
 		Blog blog = blogBL.getById(idBlog);
 		String query = "update blog set like_count = ? where id_blog = ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, blog.getLikeCount()+1);
 			ps.setInt(2, blog.getIdBlog());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -142,13 +130,11 @@ public class ReviewBL {
 		Blog blog = blogBL.getById(idBlog);
 		String query = "update blog set cmt_count = ? where id_blog = ?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, blog.getCmtCount()+1);
 			ps.setInt(2, blog.getIdBlog());
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -156,7 +142,6 @@ public class ReviewBL {
 	public void postCommentBlog(String content, boolean like, int idBlog, int idUser){
 		String query = "insert into review (title,content,date,id_blog,id_user) values (?,?,?,?,?)";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, (like?"like":"dislike"));
 			ps.setString(2, content);
@@ -165,7 +150,6 @@ public class ReviewBL {
 			ps.setInt(5, idUser);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		updateBlogComments(idBlog);
@@ -173,9 +157,9 @@ public class ReviewBL {
 	}
 	
 	public static void main(String[] args) {
-		ReviewBL rBL = new ReviewBL();
+//		ReviewBL rBL = new ReviewBL();
 //		List<Blog> list = 
-				rBL.postCommentBlog("Nội dung chưa chi tiết lắm", false, 1,1);
+//		rBL.postCommentBlog("Nội dung chưa chi tiết lắm", false, 1,1);
 //		list.forEach(s->System.out.println(s));
 //		rBL.postCommentRestaurant("Món ăn", "Hợp khẩu vị của mình...", 8, 2, 2);
 		//rBL.updateReviewRestaurant(9, 1);

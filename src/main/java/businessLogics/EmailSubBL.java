@@ -7,11 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javaBeans.Address;
 import javaBeans.EmailSub;
 
 public class EmailSubBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -25,14 +25,12 @@ public class EmailSubBL {
 		List<EmailSub> list = new ArrayList<>();
 		String query = "select * from Email_Sub";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createAddress(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -45,23 +43,18 @@ public class EmailSubBL {
 		}
 		String query = "insert into email_sub (email) values (?)";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setString(1, email);
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 	
 	public static void main(String[] args) {
-		EmailSubBL addBL = new EmailSubBL();
-		addBL.insertEmail("test4@gmail.com");
-		List<EmailSub> list = addBL.getAll();
-		list.forEach(s->System.out.println(s.toString()));
-		//List<String> list = addBL.getAllWard();
-		//list.forEach(s->System.out.println(s));
-//		System.out.println(addBL.getStringAddress(1));
+//		EmailSubBL addBL = new EmailSubBL();
+//		addBL.insertEmail("test4@gmail.com");
+//		List<EmailSub> list = addBL.getAll();
+//		list.forEach(s->System.out.println(s.toString()));
 	}
 }

@@ -7,12 +7,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javaBeans.Category;
 import javaBeans.Restaurant;
-import javaBeans.User;
 
 public class RestaurantBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -39,14 +38,12 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -56,7 +53,6 @@ public class RestaurantBL {
 		Restaurant res = null;
 		String query = "select * from restaurant where id_restaurant=?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idRes);
 			rs = ps.executeQuery();
@@ -64,7 +60,6 @@ public class RestaurantBL {
 				res = createRestaurant(rs);
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return res;
@@ -74,7 +69,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant limit ?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
 			rs = ps.executeQuery();
@@ -82,7 +76,6 @@ public class RestaurantBL {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -92,7 +85,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant where id_category = ? limit ?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, id_cat);
 			ps.setInt(2, number);
@@ -101,7 +93,6 @@ public class RestaurantBL {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -111,7 +102,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant order by id_restaurant desc limit ?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
 			rs = ps.executeQuery();
@@ -119,7 +109,6 @@ public class RestaurantBL {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -130,7 +119,6 @@ public class RestaurantBL {
 		String query = "select *, (stars/review_count) as review from restaurant order by review desc, "
 				+ "review_count desc limit ?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
 			rs = ps.executeQuery();
@@ -138,7 +126,6 @@ public class RestaurantBL {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -148,7 +135,6 @@ public class RestaurantBL {
 		List<Restaurant> list = new ArrayList<>();
 		String query = "select * from restaurant order by review_count desc limit ?";
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, number);
 			rs = ps.executeQuery();
@@ -156,7 +142,6 @@ public class RestaurantBL {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -172,23 +157,20 @@ public class RestaurantBL {
 		if (city != null && !city.equals("")) query += (query.endsWith("where ")?"":" and ") + "city = '"+city+"' ";
 		System.out.println(query);
 		try {
-			conn = DBContext.getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				list.add(createRestaurant(rs));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
 	}
 	
 	public static void main(String[] args) {
-		RestaurantBL bl = new RestaurantBL();
+//		RestaurantBL bl = new RestaurantBL();
 //		List<Restaurant> list = bl.find(null,"","","Quận 1","TP.HCM");
 //		list.forEach(s->System.out.println(s.toString()));
-		System.out.println(bl.getById(1));
 	}
 }

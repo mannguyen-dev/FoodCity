@@ -32,12 +32,12 @@ public class UserController {
 		}
 	}
 	
-	//Sign up feature
 	@RequestMapping(path = "/signup")
 	public String header(HttpServletRequest request) {
 		return "signup_section";
 	}
 	
+	@SuppressWarnings("deprecation")
 	@RequestMapping(path = "/signup", method = RequestMethod.POST)
 	public String header(HttpServletRequest request, 
 			@RequestParam(name = "fname",required = true) String fname,
@@ -51,6 +51,7 @@ public class UserController {
 			@RequestParam(name = "re-password",required = true) String re_password,
 			@RequestParam(name = "term",required = false) String term
 			) throws IOException, ServletException {
+		
 		UserBL uBL = new UserBL();
 		String warning = "";
 		
@@ -73,7 +74,6 @@ public class UserController {
 			warning = "Số điện thoại vừa nhập đã tồn tại trên hệ thống!";
 		}
 		
-
 		if (warning != "") {
 			request.setAttribute("warning", warning);
 			return "signup_section";
@@ -108,7 +108,6 @@ public class UserController {
 		return "login_section";
 	}
 	
-	// Log in feature
 	@RequestMapping(path = "/login")
 	public String login(HttpServletRequest request) {
 		return "login_section";
@@ -144,11 +143,10 @@ public class UserController {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("user", u);
-		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home'> Trang chủ!  </a>");
+		request.setAttribute("mess1", "Đăng nhập thành công. Trở về <a href='home' style='color:#e67700;font-weight:bold;'> TRANG CHỦ!  </a>");
 		return "login_section";
 	}
 	
-	//Log out feature
 	@RequestMapping(path = "/logout")
 	public String logout(HttpServletRequest request) {
 		HttpSession session = request.getSession();
@@ -156,7 +154,6 @@ public class UserController {
 		return "redirect:/home";
 	}
 	
-	//Forgot password
 	@RequestMapping(path = "/forgot_pass")
 	public String forgotPass(HttpServletRequest request) {
 		String mess = "Vui lòng kiểm tra email/tin nhắn và làm theo hướng dẫn!";

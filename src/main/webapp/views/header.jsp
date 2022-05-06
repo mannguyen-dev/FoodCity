@@ -49,55 +49,62 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
       <div class="humberger__menu__logo">
-        <a href="#"><img src="img/logo.avg" alt=""/></a>
+        <a href="#"><img src="img/logo.svg" alt=""/></a>
       </div>
-      <div class="humberger__menu__cart">
+      <div class="humberger__menu__cart menu__anhdaidien">
+      <c:if test="${!empty sessionScope.user }">
+        <div class="header__avatar">
+            <a href="#"><img src="img/user/${sessionScope.user.avatar }" alt="user avatar"></a>
+        </div>
+        <div class="header__cart__price"><span>${sessionScope.user.name }</span></div>
         <ul>
           <li>
-            <a href="#"><i class="fa fa-heart"></i> <span>1</span></a>
+            <a href="#"><i class="fa fa-gift"></i> <span>1</span></a>
           </li>
           <li>
-            <a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a>
+            <a href="#"><i class="fa fa-inbox"></i> <span>3</span></a>
           </li>
         </ul>
-        <div class="header__cart__price">item: <span>$150.00</span></div>
+      </c:if>
       </div>
-      <div class="humberger__menu__widget">
-        <div class="header__top__right__language">
-          <img src="img/language.png" alt="" />
-          <div>English</div>
-          <span class="arrow_carrot-down"></span>
-          <ul>
-            <li><a href="#">Vietnam</a></li>
-            <li><a href="#">English</a></li>
-          </ul>
-        </div>
-        <div class="header__top__right__auth">
-        <c:if test="${empty sessionScope.user }">
-           <a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
-        </c:if>
-        <c:if test="${not empty sessionScope.user }">
-           <a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
-        </c:if>
-        </div>
+      <div class="humberger__menu__widget menu_dangnhap">
+	      <div class="header__top__right__language">
+	         <img src="img/language.png" alt="" />
+	         <div>Vietnam
+		         <span class="arrow_carrot-down"></span>
+	         </div>
+	         <ul>
+	            <li><a href="#">Vietnam</a></li>
+	            <li><a href="#">English</a></li>
+	         </ul>
+	      </div>
+	      <div class="header__top__right__auth">
+	      <c:if test="${empty sessionScope.user }">
+	         <a href="login_page.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
+	         <a href="signup_page.jsp"><i class="fa fa-user-plus" aria-hidden="true"></i></a>
+	      </c:if>
+	      <c:if test="${not empty sessionScope.user }">
+	         <a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+	      </c:if>
+	      </div>
       </div>
       <nav class="humberger__menu__nav mobile-menu">
         <ul>
           <li class="active"><a href="./index.jsp">Trang chủ</a></li>
           <li><a href="./restaurant-grid.jsp?category=-1">Khám phá</a></li>
-          <li><a href="./blog.html">Blog</a></li>
+          <li><a href="./blog.jsp">Blog</a></li>
           <li>
           <c:if test="${not empty sessionScope.user && sessionScope.user.idRole <= 2 }">
             <a href="#">Nhà hàng</a>
             <ul class="header__menu__dropdown">
-              <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
-              	<li><a href="./shoping-cart.html">Thêm mới</a></li>
-                <li><a href="./checkout.html">Chỉnh sửa</a></li>
-              <li><a href="./blog-details.jsp?idBlog=1">Blog của tôi</a></li>
+              <li><a style="font-weight: normal;" href="./restaurant-details.jsp?idRes=1"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;Thông tin</a></li>
+              <li><a style="font-weight: normal;" href="#"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;Thêm mới</a></li>
+              <li><a style="font-weight: normal;" href="#"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;Chỉnh sửa</a></li>
+              <li><a style="font-weight: normal;" href="./blog-details.jsp?idBlog=1"><i class="fa fa-circle-o" aria-hidden="true"></i>&nbsp;Blog của tôi</a></li>
             </ul>
        	  </c:if>
           </li>
-          <li><a href="./contact.html">Liên hệ</a></li>
+          <li><a href="./contact.jsp">Liên hệ</a></li>
         </ul>
       </nav>
       <div id="mobile-menu-wrap"></div>
@@ -163,14 +170,14 @@
                 </div>
                 <c:if test="${empty sessionScope.user }">
                 <div class="header__top__right__auth">
-                	<a href="login_page.jsp"><i class="fa fa-user"></i> Đăng nhập</a>
+                	<a href="login_page.jsp"><i class="fa fa-sign-in" aria-hidden="true"></i> Đăng nhập</a>
                
-                	<a href="signup_page.jsp"><i class="fa fa-user"></i> Đăng ký</a>
+                	<a href="signup_page.jsp"><i class="fa fa-user-plus" aria-hidden="true"></i> Đăng ký</a>
                 </div>
                 </c:if>
                 <c:if test="${not empty sessionScope.user }">
                 <div class="header__top__right__auth">
-                	<a href="logout"><i class="fa fa-user"></i> Đăng xuất</a>
+                	<a href="logout"><i class="fa fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
                 </div>
                 </c:if>
                 </div>
@@ -197,8 +204,8 @@
                   <a href="#">Nhà hàng</a>
                   <ul class="header__menu__dropdown">
                     <li><a href="./restaurant-details.jsp?idRes=1">Thông tin</a></li>
-                    <li><a href="./shoping-cart.html">Thêm mới</a></li>
-                    <li><a href="./checkout.html">Chỉnh sửa</a></li>
+                    <li><a href="#">Thêm mới</a></li>
+                    <li><a href="#">Chỉnh sửa</a></li>
                     <li><a href="./blog_details.jsp?idBlog=1">Blog của tôi</a></li>
                   </ul>
                 </li>

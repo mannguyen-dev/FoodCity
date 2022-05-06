@@ -11,7 +11,8 @@ import javaBeans.Category;
 import javaBeans.Role;
 
 public class CategoryBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -19,7 +20,6 @@ public class CategoryBL {
 		List<Category> list = new ArrayList<>();
 		String query = "select * from category";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -28,7 +28,6 @@ public class CategoryBL {
 						rs.getString("image")));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -38,7 +37,6 @@ public class CategoryBL {
 		Category cat = null;
 		String query = "select * from category where id_category=?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idCat);
 			rs = ps.executeQuery();
@@ -48,15 +46,14 @@ public class CategoryBL {
 						rs.getString("image"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return cat;
 	}
 	
 	public static void main(String[] args) {
-		CategoryBL bl = new CategoryBL();
-		List<Category> list = bl.getAllCategory();
-		list.forEach(s->System.out.println(s.toString()));
+//		CategoryBL bl = new CategoryBL();
+//		List<Category> list = bl.getAllCategory();
+//		list.forEach(s->System.out.println(s.toString()));
 	}
 }

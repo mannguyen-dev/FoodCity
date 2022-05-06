@@ -46,7 +46,7 @@ public class RestaurantDetailsController {
 		CategoryBL catBL = new CategoryBL();
 		Category cat = catBL.getById(restaurant.getIdCategory());
 		
-		//address
+		// get address
 		AddressBL addBL = new AddressBL();
 		String address = addBL.getStringAddress(restaurant.getIdAddress()); 
 		
@@ -69,7 +69,7 @@ public class RestaurantDetailsController {
 		List<Image> listFoodImg = imageBL.getByIdResAlbum(idRes, 2);
 		List<Image> listReviewImg = imageBL.getByIdResAlbum(idRes, 3);
 		
-		// set att
+		// set attribute
 		request.setAttribute("res", restaurant);
 		request.setAttribute("cat", cat);
 		request.setAttribute("listFeatureImg", listFeatureImg);

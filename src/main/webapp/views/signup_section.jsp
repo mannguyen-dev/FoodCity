@@ -5,13 +5,13 @@
 
   <section class="signup_section">
 
-  <div class="d-lg-flex half">
+  <div class="container d-lg-flex half">
     <div class="bg order-1 order-md-2" style="background-image: url('img/bg_1.jpg');"></div>
     <div class="contents order-2 order-md-1">
 
       <div class="container">
         <div class="row align-items-center justify-content-center">
-          <div class="col-md-8 py-5">
+          <div class="col-md-11 py-5">
             <h3>Đăng ký</h3>
             <p style="color: red">${warning }</p>
             <p class="mb-4" style="color: #495057">Trở thành thành viên của Food City để khám phá thế giới ẩm thực và nhận nhiều ưu đãi hấp dẫn!</p>

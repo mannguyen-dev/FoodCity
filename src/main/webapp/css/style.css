@@ -53,6 +53,12 @@ h6 {
 
 .signup_section{
 	height: 1000px;
+	margin-bottom: 80px;
+}
+
+.login_section{
+	height: 1000px;
+	margin-bottom: 80px;
 }
 
 h1 {
@@ -424,6 +430,7 @@ ol {
 .header__top__right__auth {
   display: flex;
   justify-content: right;
+  gap: 20px;
 }
 
 .header__top__right__auth a {
@@ -3916,4 +3923,28 @@ ol {
 
 .thongtin__danhmuc i{
 	width: 16px;
+}
+
+.menu__anhdaidien{
+	display: flex;
+	gap: 12px;
+	align-items: center;
+}
+
+.menu__anhdaidien ul{
+	margin:0;
+}
+
+.menu_dangnhap{
+	display: flex;
+	justify-content: left;
+	margin-bottom: 8px;
+}
+
+.menu_dangnhap .header__top__right__language{
+	width: 120px;
+}
+
+.danh__gia label{
+	margin-bottom: 0;
 }

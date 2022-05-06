@@ -10,7 +10,8 @@ import java.util.List;
 import javaBeans.Role;
 
 public class RoleBL {
-	Connection conn = null;
+	DBContext db = new DBContext();
+	Connection conn = db.getConnection();
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -18,7 +19,6 @@ public class RoleBL {
 		List<Role> list = new ArrayList<>();
 		String query = "select * from role";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while(rs.next()) {
@@ -27,7 +27,6 @@ public class RoleBL {
 						rs.getString("description")));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return list;
@@ -37,7 +36,6 @@ public class RoleBL {
 		Role role = null;
 		String query = "select * from role where id_role=?";
 		try {
-			conn = new DBContext().getConnection();
 			ps = conn.prepareStatement(query);
 			ps.setInt(1, idRole);
 			rs = ps.executeQuery();
@@ -47,17 +45,14 @@ public class RoleBL {
 						rs.getString("description"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return role;
 	}
 	
 	public static void main(String[] args) {
-		RoleBL r = new RoleBL();
+//		RoleBL r = new RoleBL();
 //		List<Role> list = r.getAllRole();
 //		list.forEach(s->System.out.println(s.toString()));
-		Role role = r.getByIdRole(1);
-		System.out.println(role);
 	}
 }
