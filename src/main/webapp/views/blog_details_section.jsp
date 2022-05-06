@@ -43,7 +43,7 @@
                 	<div class="blog__details__hero__text">
                         <h2>${blog.title }</h2>
                         <ul>
-                            <li>By ${poster.name }</li>
+                            <li>Đăng bởi: ${poster.name }</li>
                             <li>${blog.date }</li>
                             <li>${blog.cmtCount } bình luận (${blog.likeCount} lượt thích)</li>
                         </ul>
